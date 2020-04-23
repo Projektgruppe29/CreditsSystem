@@ -11,6 +11,8 @@ import java.io.IOException;
 public class LoginController {
     public TextField usernameTextField;
     public TextField passwordTextField;
+    User user;
+
 
     @FXML
     //Temporary code to allow switching to production fxml
@@ -21,14 +23,16 @@ public class LoginController {
     public void onEnterButtonClick() throws IOException {
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
+        user = new User();
+        user.getUsers();
+
 
         Alert a = new Alert(Alert.AlertType.NONE);
 
-        boolean success= User.login(username,password);
-        if(success){
-           App. setRoot("Production");
-    }
-
+        boolean success= user.loginUser(username,password);
+        if(success) {
+            App.setRoot("Production");
+        }
         else {
             // set alert type
             a.setAlertType(Alert.AlertType.ERROR);

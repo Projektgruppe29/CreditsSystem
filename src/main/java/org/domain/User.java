@@ -14,6 +14,9 @@ public class User {
     private User currentUser;
     private ArrayList<User> users;
 
+    public User(){
+        this.users=new ArrayList<>();
+}
     public User getCurrentUser() {
         return currentUser;
     }
