@@ -1,0 +1,4 @@
+.SearchIcon{
+    -fx-background-image: url('SearchIcon.png');
+    -fx-background-size: 100% 100%;
+}

@@ -35,7 +35,7 @@ public class Movie extends Media implements Comparable<Media>{
 
     //A constructor for a Movie object that sets the title, release year, year (with potential Roman Numeral), and venue.
     public Movie(String line) throws StringIndexOutOfBoundsException{
-        String year = line.substring(line.length() - 4, line.length()); // Takes last 4 chars to assign to year
+        String year = line.substring(line.length() - 4); // Takes last 4 chars to assign to year
         // Checks if year is unknown, suspended, or neither to set release year field
         if (year.equals("????")) {
             releaseYear = "UNSPECIFIED";
@@ -224,11 +224,7 @@ public class Movie extends Media implements Comparable<Media>{
         // Comparing year and potential Roman Numerals
         int yearAndNumeralDiff = this.yearAndNumeral.compareTo(other.getYearWithNumeral());
 
-        if (yearAndNumeralDiff != 0) {
-            return yearAndNumeralDiff;
-        }
-
-        return 0; // returns zero if all fields are the same because the movies are the same
+        return yearAndNumeralDiff;// returns zero if all fields are the same because the movies are the same
     }
 
 
