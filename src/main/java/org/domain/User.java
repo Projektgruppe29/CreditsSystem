@@ -13,7 +13,6 @@ public class User {
     String filename="src/main/java/org/data/users.txt";
     private User currentUser;
     private ArrayList<User> users;
-    private int priviledgeLevel;
 
     enum Priviledge{
         Sysadmin,
@@ -23,27 +22,12 @@ public class User {
 
     public String getUserName() { return userName; }
 
-    public User(int userID, String userName, String password, int priviledgeLevel) {
+    public User(int userID, String userName, String password) {
         this.userID = userID;
         this.userName = userName;
         this.password = password;
-        this.priviledgeLevel = priviledgeLevel;
-    }
-    public int getPriviledgeLevel() {
-        return priviledgeLevel;
     }
 
-    public Priviledge getRole(){
-        switch (this.priviledgeLevel){
-            case 1:
-                return Priviledge.Admin;
-            case 2:
-                return Priviledge.Producer;
-            case 3:
-                return Priviledge.Sysadmin;
-        }
-        return Priviledge.Sysadmin;
-    }
 
 
     public boolean login(String password){
@@ -66,7 +50,7 @@ public class User {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] objs=line.split(",");
-                User user=new User(Integer.parseInt(objs[0]),objs[1],objs[2],Integer.parseInt(objs[3]));
+                User user=new User(Integer.parseInt(objs[0]),objs[1],objs[2]);
                 users.add(user);
             }
 
