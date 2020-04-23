@@ -93,7 +93,7 @@ public class Episode extends Media implements Comparable<Media> {
             seasonAndEpisodeNum = seasonAndEpisodeNum.substring(0, (seasonAndEpisodeNum.length()-1));
         }
         else if (currentComp == "{{SUSPENDED}}") {
-            this.seasonAndEpisodeNum = currentComp.toString();
+            this.seasonAndEpisodeNum = currentComp;
         }
         else {
             this.seasonAndEpisodeNum = "No Season or Episode Number Information Available";
@@ -218,7 +218,7 @@ public class Episode extends Media implements Comparable<Media> {
     public int compareTo(Media otherEpisode) {
 
         //Compare based on title
-        if(otherEpisode.getClass().getName().toString() == "Series" | otherEpisode.getClass().getName().toString() == "Movie"){
+        if(otherEpisode.getClass().getName() == "Series" | otherEpisode.getClass().getName() == "Movie"){
             // Comparing episodes' series titles
             int seriesTitleDiff = this.seriesTitle.compareTo(otherEpisode.getTitle());
             if (seriesTitleDiff != 0) {
@@ -226,7 +226,7 @@ public class Episode extends Media implements Comparable<Media> {
             }
         }
 
-        if(otherEpisode.getClass().getName().toString() == "Episode"){
+        if(otherEpisode.getClass().getName() == "Episode"){
             Episode other = (Episode) otherEpisode;
             // Comparing episodes' series titles
             int seriesTitleDiff = this.seriesTitle.compareTo(other.getSeriesTitle());
@@ -250,13 +250,11 @@ public class Episode extends Media implements Comparable<Media> {
         }
 
         // Comparing season and episode numbers
-        if(otherEpisode.getClass().getName().toString() == "Episode"){
+        if(otherEpisode.getClass().getName() == "Episode"){
             Episode other = (Episode) otherEpisode;
             int seasonAndEpDiff = this.seasonAndEpisodeNum.compareTo(other.getSeasonAndEpisodeNum());
 
-            if (seasonAndEpDiff != 0) {
-                return seasonAndEpDiff;
-            }
+            return seasonAndEpDiff;
         }
         return 0; // Returns zero if all fields are the same because the episodes are the same
     }

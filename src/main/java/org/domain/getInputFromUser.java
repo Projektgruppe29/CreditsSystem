@@ -1,4 +1,4 @@
-package org.openjfx;
+package org.presentation;
 
 import java.util.Scanner;
 

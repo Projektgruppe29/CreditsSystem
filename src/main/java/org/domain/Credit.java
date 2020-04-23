@@ -341,9 +341,6 @@ public class Credit implements Comparable<Credit> {
     public int compareTo(Credit o) {
         int personNameDiff = this.fullName.compareTo(o.getName());
 
-        if (personNameDiff != 0) {
-            return personNameDiff;
-        }
-        return 0;
+        return personNameDiff;
     }
 }
