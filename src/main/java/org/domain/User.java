@@ -13,37 +13,49 @@ public class User {
     String filename="src/main/java/org/data/users.txt";
     private User currentUser;
     private ArrayList<User> users;
+    private int priviledgeLevel;
 
-    public User(){
-        this.users=new ArrayList<>();
-}
-    public User getCurrentUser() {
-        return currentUser;
+    enum Priviledge{
+        Sysadmin,
+        Producer,
+        Admin
     }
 
     public String getUserName() { return userName; }
 
-    public User(int userID, String userName, String password) {
+    public User(int userID, String userName, String password, int priviledgeLevel) {
         this.userID = userID;
         this.userName = userName;
         this.password = password;
-
-        User user = new User(userID, userName, password);
+        this.priviledgeLevel = priviledgeLevel;
+    }
+    public int getPriviledgeLevel() {
+        return priviledgeLevel;
     }
 
-    public boolean login(String username, String password){
+    public Priviledge getRole(){
+        switch (this.priviledgeLevel){
+            case 1:
+                return Priviledge.Admin;
+            case 2:
+                return Priviledge.Producer;
+            case 3:
+                return Priviledge.Sysadmin;
+        }
+        return Priviledge.Sysadmin;
+    }
+
+
+    public boolean login(String password){
         return this.password.equals(password);
     }
 
-    public boolean loginUser(String username, String password){
+    public User(){
+        this.users=new ArrayList<>();
+}
 
-        for(int i=0;i<users.size();i++){
-            if(users.get(i).getUserName().equalsIgnoreCase(username)){
-                currentUser = users.get(i);
-                return users.get(i).login(username, password);
-            }
-        }
-        return false;
+    public User getCurrentUser() {
+        return currentUser;
     }
 
     public boolean getUsers(){
@@ -54,7 +66,7 @@ public class User {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] objs=line.split(",");
-                User user=new User(Integer.parseInt(objs[0]),objs[1],objs[2]);
+                User user=new User(Integer.parseInt(objs[0]),objs[1],objs[2],Integer.parseInt(objs[3]));
                 users.add(user);
             }
 
@@ -65,6 +77,16 @@ public class User {
         finally {
             return true;
         }
+    }
+    public boolean loginUser(String username, String password){
+
+        for(int i=0;i<users.size();i++){
+            if(users.get(i).getUserName().equalsIgnoreCase(username)){
+                currentUser = users.get(i);
+                return users.get(i).login(password);
+            }
+        }
+        return false;
     }
 
 

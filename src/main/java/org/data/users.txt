@@ -1,5 +1,5 @@
-01,Jhon,12345
-02,David,09876
-03,Stefan,55667
-04,George,09opT
-05,Juana,56ghy
+01,Jhon,12345,1
+02,David,09876,2
+03,Stefan,55667,3
+04,George,09opT,1
+05,Juana,56ghy,1
