@@ -1,37 +1,47 @@
 package org.domain;
 
-/*
-public class Credits extends Production {
+import java.util.ArrayList;
+
+public class Credits {
 
     private String fullName;
     private String role;
-    private int PersonID; //kan ændres til long afhængig af størrelsen
+    private int personID; //kan ændres til long afhængig af størrelsen
+
+    private String nameOfProduction;
+    private int productionID;
+
 
     ArrayList<String> Credits;
 
 
-    private Credits(String newFullName, int newPersonID) {
-        this.fullName = newFullName;
-        this.PersonID = newPersonID;
+    public Credits(String fullName, int personID, String role) {
+        this.fullName = fullName;
+        this.personID = personID;
+        this.role = role;
     }
 
-    public Credits (String productionID, String productionName) {
-        super(productionID, productionName);
+
+    public void Production(String ProductionName, int ProductionID) {
+
     }
 
-    public int getProductionID() {
-        return productionID;
+    public String getFullName() {
+        return fullName;
     }
 
-    public String getProductionName() {
-        return productionName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public static void main(String[] args) {
+    public int getPersonID() {
+        return personID;
+    }
 
+    public String getRole() {
+        return role;
     }
 
 }
 
 
- */
