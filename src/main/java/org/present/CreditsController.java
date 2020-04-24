@@ -10,8 +10,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import org.data.db;
 import org.domain.Credits;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -72,7 +74,15 @@ public class CreditsController implements Initializable {
         tableView.getItems().add(newPerson);
     }
 
+    private void clearList() {
+        fullNameTextField.clear();
+        PersonIDTextField.clear();
+        RoleTextField.clear();
+    }
+
     public void ConfirmList(ActionEvent actionEvent) {
+        db.getCreditsList().add(new Credits(fullNameTextField.getText(), Integer.parseInt(PersonIDTextField.getText()), RoleTextField.getText()));
+        clearList();
     }
 
     public void deleteFromList(ActionEvent actionEvent) {
@@ -86,6 +96,13 @@ public class CreditsController implements Initializable {
         }
 
     }
+
+    public void switchToProduction(ActionEvent actionEvent) throws IOException {
+        App.setRoot("Production");
+    }
+
+
+
     //Check it works
     /*
     public ObservableList<Credits> getPeople() {

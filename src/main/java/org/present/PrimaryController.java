@@ -11,7 +11,7 @@ public class PrimaryController {
         App.setRoot("Login");
     }
 
-    public void switchToInfoKorpset(MouseEvent mouseEvent) throws IOException {
-        App.setRoot("Korpset");
+    public void switchToViewFeatured(MouseEvent mouseEvent) throws IOException {
+        App.setRoot("viewFeatured");
     }
 }

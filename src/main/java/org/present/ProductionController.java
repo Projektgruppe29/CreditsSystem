@@ -60,4 +60,12 @@ public class ProductionController extends Production {
     public void switchToProduction(ActionEvent actionEvent) throws IOException {
         App.setRoot("Production");
     }
+
+    public void backToMainScene(ActionEvent actionEvent) throws IOException {
+        App.setRoot("primary");
+    }
+
+    public void SwitchToCredits(ActionEvent actionEvent) throws IOException {
+        App.setRoot("Credits");
+    }
 }
