@@ -8,11 +8,6 @@ public class Credits {
     private String role;
     private int personID; //kan ændres til long afhængig af størrelsen
 
-    private String nameOfProduction;
-    private int productionID;
-
-
-    ArrayList<String> Credits;
 
 
     public Credits(String fullName, int personID, String role) {

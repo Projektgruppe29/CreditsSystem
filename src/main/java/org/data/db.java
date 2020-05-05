@@ -1,6 +1,9 @@
 package org.data;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.domain.Credits;
+import org.domain.Movie;
 import org.domain.Production;
 
 import java.util.ArrayList;
@@ -25,7 +28,10 @@ public class db {
         return creditsList;
     }
 
-    public static void setCreditsList(ArrayList<Credits> list) {
-        db.creditsList = list;
-    }
+    public static void setCreditsList(ArrayList<Credits> list) { db.creditsList = list;}
+
+    //For Movie
+    public static ObservableList<Movie> datalist = FXCollections.observableArrayList();
+
+    public static ObservableList<Movie> getDatalist() {return datalist;}
 }
