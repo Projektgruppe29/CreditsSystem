@@ -51,9 +51,10 @@
       </ImageView>
       <TableView fx:id="tableView" layoutX="368.0" layoutY="380.0" onMouseClicked="#LoadMovie" onSort="#LoadMovieFromDatabase" prefHeight="200.0" prefWidth="322.0">
         <columns>
-          <TableColumn fx:id="nameColumn" prefWidth="136.0" text="Name" />
-          <TableColumn fx:id="genreColumn" prefWidth="81.0" text="Genre" />
-            <TableColumn fx:id="releaseYearColumn" prefWidth="86.0" text="Release year" />
+            <TableColumn fx:id="idColumn" prefWidth="37.0" text="ID" />
+          <TableColumn fx:id="nameColumn" prefWidth="105.0" text="Name" />
+          <TableColumn fx:id="genreColumn" prefWidth="70.0" text="Genre" />
+            <TableColumn fx:id="releaseYearColumn" prefWidth="98.0" text="Release year" />
         </columns>
       </TableView>
    </children>

@@ -10,8 +10,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import org.data.db;
-import org.domain.Credits;
+import org.data.Credits;
 
 import java.io.IOException;
 import java.net.URL;
@@ -37,17 +36,17 @@ public class CreditsController implements Initializable {
 
     public void changeFullnameCellEvent(CellEditEvent fullNameCell) {
         Credits personSelected = tableView.getSelectionModel().getSelectedItem();
-        personSelected.setFullName(fullNameCell.getNewValue().toString());
+        personSelected.setName(fullNameCell.getNewValue().toString());
     }
 
     public void changePersonIDCellEvent(CellEditEvent editEvent) {
         Credits personSelected = tableView.getSelectionModel().getSelectedItem();
-        personSelected.setFullName(editEvent.getNewValue().toString());
+        personSelected.setName(editEvent.getNewValue().toString());
     }
 
     public void changeRoleCellEvent(CellEditEvent editEvent) {
         Credits personSelected = tableView.getSelectionModel().getSelectedItem();
-        personSelected.setFullName(editEvent.getNewValue().toString());
+        personSelected.setName(editEvent.getNewValue().toString());
     }
 
     @Override
@@ -69,7 +68,7 @@ public class CreditsController implements Initializable {
 
 
     public void AddToList(ActionEvent actionEvent) {
-        Credits newPerson = new Credits(fullNameTextField.getText(), Integer.parseInt(PersonIDTextField.getText()), RoleTextField.getText());
+        Credits newPerson = new Credits(new Integer(personIDColumn.getText()), fullNameTextField.getText(),RoleTextField.getText());
 
         tableView.getItems().add(newPerson);
     }
@@ -81,7 +80,7 @@ public class CreditsController implements Initializable {
     }
 
     public void ConfirmList(ActionEvent actionEvent) {
-        db.getCreditsList().add(new Credits(fullNameTextField.getText(), Integer.parseInt(PersonIDTextField.getText()), RoleTextField.getText()));
+        Credits.getCreditsList().add(new Credits(new Integer(personIDColumn.getText()), fullNameTextField.getText(),RoleTextField.getText()));
         clearList();
     }
 

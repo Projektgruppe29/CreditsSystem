@@ -1,5 +1,5 @@
-package org.domain;
-import java.lang.reflect.Array;
+package org.data;
+
 import java.util.ArrayList;
 
 public class Production {
@@ -9,8 +9,7 @@ public class Production {
     String productionCountry;
     int episodeCount;
     String genre;
-
-
+    private static ArrayList<Production> list = new ArrayList<>();
 
     public Production() {
     }
@@ -37,6 +36,11 @@ public class Production {
         this.episodeCount = episodeCount;
         this.genre = genre;
     }
+
+    public static ArrayList<Production> getList() {
+        return list;
+    }
+
 
        // Production obj = new Production();
 }

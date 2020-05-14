@@ -2,9 +2,8 @@ package org.present;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import org.domain.User;
+import org.data.User;
 
 import java.io.IOException;
 

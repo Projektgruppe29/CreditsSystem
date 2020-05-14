@@ -4,17 +4,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import org.domain.Production;
+import org.data.Production;
 import java.util.ArrayList;
-import org.data.db;
 
 
-
-import java.awt.*;
 import java.io.IOException;
 
 public class ProductionController extends Production {
@@ -35,7 +31,7 @@ public class ProductionController extends Production {
 
 
     public void confirmProduction(ActionEvent actionEvent) {
-        db.getList().add(new Production(ProductionNameTextField.getText(), Integer.parseInt(ProductionIDTextField.getText()), Integer.parseInt(ProductionReleaseTextField.getText()),
+        Production.getList().add(new Production(ProductionNameTextField.getText(), Integer.parseInt(ProductionIDTextField.getText()), Integer.parseInt(ProductionReleaseTextField.getText()),
                 ProductionCountryTextField.getText(), Integer.parseInt(EpisodeCountTextField.getText()), ProductionGenreTextField.getText()));
         clearFields();
     }
@@ -49,7 +45,7 @@ public class ProductionController extends Production {
     }
 
     public void getProductionList(ActionEvent actionEvent) {
-        viewProduction.setItems(FXCollections.observableArrayList(db.getList()));
+        viewProduction.setItems(FXCollections.observableArrayList(Production.getList()));
     }
 
     public void showProduction(MouseEvent mouseEvent) {
@@ -66,6 +62,6 @@ public class ProductionController extends Production {
     }
 
     public void SwitchToCredits(ActionEvent actionEvent) throws IOException {
-        App.setRoot("Credits");
+        App.setRoot("TEST");
     }
 }

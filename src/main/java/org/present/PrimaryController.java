@@ -2,12 +2,12 @@ package org.present;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
@@ -17,11 +17,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import org.data.ConnectionToDatabase;
-import org.data.db;
 import org.domain.Movie;
 
-import static org.data.db.datalist;
+import static org.domain.Movie.datalist;
 
 public class PrimaryController implements Initializable {
 
@@ -30,15 +28,13 @@ public class PrimaryController implements Initializable {
     @FXML
     private TextField filterField;
     @FXML
+    private TableColumn<Movie, Integer> idColumn;
+    @FXML
     private TableColumn<Movie, String> nameColumn;
     @FXML
     private TableColumn<Movie, String> genreColumn;
     @FXML
     private TableColumn<Movie, Integer> releaseYearColumn;
-
-    private Connection con = null;
-    private PreparedStatement queryStatement = null;
-    private ResultSet rs = null;
 
     @FXML
     public void switchToLogin() throws IOException {
@@ -49,33 +45,23 @@ public class PrimaryController implements Initializable {
         App.setRoot("viewFeatured");
     }
 
+    private void LoadMovies(Movie movie) throws SQLException {
+        ObservableList<Movie> DBData = FXCollections.observableArrayList();
+        DBData.add(movie);
+        tableView.setItems(DBData);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        con = ConnectionToDatabase.main();
-        db.getDatalist();
         setCellTable();
-        LoadMovieFromDatabase();
         searchSortFilter();
     }
 
     private void setCellTable() {
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         genreColumn.setCellValueFactory(new PropertyValueFactory<>("genre"));
         releaseYearColumn.setCellValueFactory(new PropertyValueFactory<>("releaseYear"));
-    }
-
-    public void LoadMovieFromDatabase()  {
-        try{
-            queryStatement = con.prepareStatement("SELECT * FROM movies");
-            rs = queryStatement.executeQuery();
-            while(rs.next()) {
-                datalist.add(new Movie(rs.getString(2),rs.getString(3),rs.getInt(4)));
-            }
-            rs.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        tableView.setItems(datalist);
     }
 
     public void searchSortFilter() {
@@ -110,5 +96,10 @@ public class PrimaryController implements Initializable {
     public void LoadMovie(MouseEvent mouseEvent) throws IOException, InterruptedException {
         Thread.sleep(500);
         App.setRoot("viewFeatured");
+    }
+
+    public void LoadMovieFromDatabase() {
+        Movie.getMovies();
+        tableView.setItems(datalist);
     }
 }
