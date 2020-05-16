@@ -2,14 +2,10 @@ package org.present;
 
 import java.io.IOException;
 import java.net.URL;
-
-import java.sql.SQLException;
 import java.util.ResourceBundle;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -17,24 +13,23 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import org.domain.Movie;
-
-import static org.domain.Movie.datalist;
+import org.data.Production;
+import org.domain.PersistanceHandler;
 
 public class PrimaryController implements Initializable {
 
     @FXML
-    private TableView<Movie> tableView;
+    private TableView tableView;
     @FXML
     private TextField filterField;
     @FXML
-    private TableColumn<Movie, Integer> idColumn;
+    private TableColumn<Production, Integer> idColumn;
     @FXML
-    private TableColumn<Movie, String> nameColumn;
+    private TableColumn<Production, String> nameColumn;
     @FXML
-    private TableColumn<Movie, String> genreColumn;
+    private TableColumn<Production, String> genreColumn;
     @FXML
-    private TableColumn<Movie, Integer> releaseYearColumn;
+    private TableColumn<Production, Integer> releaseYearColumn;
 
     @FXML
     public void switchToLogin() throws IOException {
@@ -45,16 +40,9 @@ public class PrimaryController implements Initializable {
         App.setRoot("viewFeatured");
     }
 
-    private void LoadMovies(Movie movie) throws SQLException {
-        ObservableList<Movie> DBData = FXCollections.observableArrayList();
-        DBData.add(movie);
-        tableView.setItems(DBData);
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setCellTable();
-        searchSortFilter();
     }
 
     private void setCellTable() {
@@ -65,28 +53,29 @@ public class PrimaryController implements Initializable {
     }
 
     public void searchSortFilter() {
-        FilteredList<Movie> filteredList = new FilteredList<>(datalist, e -> true);
+        FilteredList<Production> filteredList = new FilteredList<>(PersistanceHandler.getInstance().getProduction(), e -> true);
 
         filterField.textProperty().addListener((observableValue, oldValue, newValue) -> {
-            filteredList.setPredicate(movie -> {
+            filteredList.setPredicate(production -> {
                 if(newValue == null || newValue.isEmpty()) {
                     return true;
                 }
 
                 String lowerCaseFilter = newValue.toLowerCase();
 
-                if(movie.getName().toLowerCase().indexOf(lowerCaseFilter) !=-1) {
+                if(production.getName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     return true;
-                } else if (movie.getGenre().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                } else if (production.getGenre().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     return true;
-                } else {
+                }
+                 else {
                     return false;
                 }
             });
 
         });
 
-        SortedList<Movie> sortedList = new SortedList<>(filteredList);
+        SortedList<Production> sortedList = new SortedList<>(filteredList);
 
         sortedList.comparatorProperty().bind(tableView.comparatorProperty());
 
@@ -98,8 +87,8 @@ public class PrimaryController implements Initializable {
         App.setRoot("viewFeatured");
     }
 
-    public void LoadMovieFromDatabase() {
-        Movie.getMovies();
-        tableView.setItems(datalist);
+    public void viewProduction(ActionEvent actionEvent) {
+        tableView.setItems(PersistanceHandler.getInstance().getProduction());
+        searchSortFilter();
     }
 }

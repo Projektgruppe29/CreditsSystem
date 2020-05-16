@@ -15,4 +15,24 @@ public class ActorProfiles {
     public void setFullname(String fullname) {
         this.fullname = fullname;
     }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setrole(String role) {
+        this.role = role;
+    }
+
+    public String getRole(){
+        return role;
+    }
+
+    public void setPersonID(int personID) {
+        this.personID = personID;
+    }
+
+    public int getPersonID() {
+        return personID;
+    }
 }

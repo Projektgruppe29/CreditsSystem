@@ -29,6 +29,6 @@
       <Text layoutX="53.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Genre" />
       <Text layoutX="24.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Episode count" wrappingWidth="87.005859375" />
 
-      <Button fx:id="backButton" layoutX="499.0" layoutY="33.0" mnemonicParsing="false" onAction="#switchToProduction" prefWidth="32.0" styleClass="BackIcon" stylesheets="@../../CSS/BackArrow.css" />
+      <Button fx:id="backButton" layoutX="24.0" layoutY="24.0" mnemonicParsing="false" onAction="#switchToProduction" prefWidth="32.0" styleClass="BackIcon" stylesheets="@../../CSS/BackArrow.css" />
    </children>
 </AnchorPane>

@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import org.data.Credits;
+import org.domain.PersistanceHandler;
 
 import java.io.IOException;
 import java.net.URL;
@@ -79,10 +80,12 @@ public class CreditsController implements Initializable {
         RoleTextField.clear();
     }
 
+
     public void ConfirmList(ActionEvent actionEvent) {
-        Credits.getCreditsList().add(new Credits(new Integer(personIDColumn.getText()), fullNameTextField.getText(),RoleTextField.getText()));
+        PersistanceHandler.getInstance().getCredits().add(new Credits(new Integer(personIDColumn.getText()), fullNameTextField.getText(),RoleTextField.getText()));
         clearList();
     }
+
 
     public void deleteFromList(ActionEvent actionEvent) {
         ObservableList<Credits> selectedRows, allPeople;

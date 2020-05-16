@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.present.CastController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.present.CastController">
    <children>
       <Button layoutX="145.0" layoutY="299.0" mnemonicParsing="false" text="Add to list" />
       <Button layoutX="243.0" layoutY="355.0" mnemonicParsing="false" text="Add to Production">
@@ -27,9 +30,6 @@
       <TextField layoutX="114.0" layoutY="122.0" promptText="Full name" />
       <TextField layoutX="114.0" layoutY="178.0" promptText="Primary/Secondary Cast" />
       <TextField layoutX="114.0" layoutY="245.0" promptText="Find associated role" />
-      <ScrollBar layoutX="281.0" layoutY="48.0" orientation="VERTICAL" prefHeight="25.0" prefWidth="14.0" />
-      <ScrollBar layoutX="281.0" layoutY="167.0" orientation="VERTICAL" prefHeight="25.0" prefWidth="14.0" />
-      <ScrollBar layoutX="281.0" layoutY="234.0" orientation="VERTICAL" prefHeight="25.0" prefWidth="14.0" />
       <Button fx:id="backButton" layoutX="17.0" layoutY="16.0" mnemonicParsing="false" onAction="#switchToPrimary" prefHeight="25.0" prefWidth="32.0" styleClass="BackIcon" stylesheets="@../../CSS/BackArrow.css" />
    </children>
 </AnchorPane>
