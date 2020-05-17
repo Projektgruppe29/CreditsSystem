@@ -23,12 +23,11 @@ import java.util.ResourceBundle;
 
 public class ProductionController implements Initializable {
     public TableView tableView;
-    public TextField ProductionNameTextField;
-    public TextField ProductionIDTextField;
-    public TextField ProductionReleaseTextField;
-    public TextField ProductionCountryTextField;
-    public TextField EpisodeCountTextField;
-    public TextField ProductionGenreTextField;
+    public TextField IDTextField;
+    public TextField nameTextField;
+    public TextField genreTextField;
+    public TextField releaseYearTextField;
+
     @FXML
     private TableColumn<Production, Integer> idColumn;
     @FXML
@@ -49,10 +48,6 @@ public class ProductionController implements Initializable {
         App.setRoot("primary");
     }
 
-    public void SwitchToCredits(ActionEvent actionEvent) throws IOException {
-        App.setRoot("Credits");
-    }
-
     //productionValues.fxml
     public void switchToProduction(ActionEvent actionEvent) throws IOException {
         App.setRoot("Production");
@@ -60,7 +55,10 @@ public class ProductionController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setCellTable();
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        genreColumn.setCellValueFactory(new PropertyValueFactory<>("genre"));
+        releaseYearColumn.setCellValueFactory(new PropertyValueFactory<>("releaseYear"));
     }
 
     private void setCellTable() {
@@ -72,18 +70,14 @@ public class ProductionController implements Initializable {
 
 
     public void confirmProduction(ActionEvent actionEvent) {
-        PersistanceHandler.getInstance().getProduction().add(new Production(ProductionNameTextField.getText(), Integer.parseInt(ProductionIDTextField.getText()), Integer.parseInt(ProductionReleaseTextField.getText()),
-                ProductionCountryTextField.getText(), Integer.parseInt(EpisodeCountTextField.getText()), ProductionGenreTextField.getText()));
+        PersistanceHandler.getInstance().getProduction().add(new Production(Integer.parseInt(IDTextField.getText()), nameTextField.getText(), genreTextField.getText(), Integer.parseInt(releaseYearTextField.getText())));
         clearFields();
     }
 
     private void clearFields() {
-        ProductionNameTextField.clear();
-        ProductionIDTextField.clear();
-        ProductionReleaseTextField.clear();
-        ProductionCountryTextField.clear();
-        EpisodeCountTextField.clear();
-        ProductionGenreTextField.clear();
+        nameTextField.clear();
+        genreTextField.clear();
+        releaseYearTextField.clear();
     }
 
 

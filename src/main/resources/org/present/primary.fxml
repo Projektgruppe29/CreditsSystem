@@ -5,51 +5,51 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.present.PrimaryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="977.0" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.present.PrimaryController">
    <children>
-      <Button fx:id="primaryButton" layoutX="931.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToLogin" text="LOG IN" />
-      <TextField fx:id="filterField" layoutX="398.0" layoutY="60.0" prefHeight="25.0" prefWidth="188.0" promptText="Search movies, TV, actors, more..." />
-      <Button layoutX="593.0" layoutY="60.0" mnemonicParsing="false" onAction="#viewProduction" prefHeight="25.0" prefWidth="30.0" styleClass="SearchIcon" stylesheets="@../../CSS/SearchIcon.css" />
-      <Label layoutX="80.0" layoutY="85.0" text="Featured" textFill="#f5f0f0">
+      <Button fx:id="primaryButton" layoutX="875.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="25.0" prefWidth="84.0" text="LOG IN" />
+      <TextField fx:id="filterField" layoutX="381.0" layoutY="60.0" prefHeight="25.0" prefWidth="217.0" promptText="Søg efter film, genre og medvirkende" />
+      <Button layoutX="607.0" layoutY="60.0" mnemonicParsing="false" onAction="#viewProduction" prefHeight="25.0" prefWidth="30.0" styleClass="SearchIcon" stylesheets="@../../CSS/SearchIcon.css" />
+      <Label layoutX="43.0" layoutY="153.0" text="Featured" textFill="#f5f0f0">
          <font>
             <Font size="40.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="80.0" layoutY="136.0" prefHeight="220.0" prefWidth="898.0">
+      <AnchorPane layoutX="43.0" layoutY="211.0" prefHeight="339.0" prefWidth="268.0">
          <children>
-            <ImageView fitHeight="220.0" fitWidth="200.0" layoutY="4.0" onMouseClicked="#switchToViewFeatured" pickOnBounds="true">
+            <ImageView fitHeight="159.0" fitWidth="124.0" layoutY="4.0" onMouseClicked="#switchToViewFeatured" pickOnBounds="true">
                <image>
                   <Image url="@../../CSS/Korpset.jpg" />
                </image>
             </ImageView>
-            <ImageView fitHeight="220.0" fitWidth="200.0" layoutX="222.0" layoutY="4.0" pickOnBounds="true">
+            <ImageView fitHeight="159.0" fitWidth="124.0" layoutX="139.0" layoutY="4.0" pickOnBounds="true">
                <image>
                   <Image url="@../../CSS/Millionær.jpg" />
                </image>
             </ImageView>
-            <ImageView fitHeight="220.0" fitWidth="200.0" layoutX="449.0" layoutY="4.0" pickOnBounds="true">
+            <ImageView fitHeight="148.0" fitWidth="124.0" layoutY="184.0" pickOnBounds="true">
                <image>
                   <Image url="@../../CSS/Badehotel.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="220.0" fitWidth="200.0" layoutX="677.0" layoutY="4.0" pickOnBounds="true">
+            <ImageView fitHeight="148.0" fitWidth="124.0" layoutX="139.0" layoutY="184.0" pickOnBounds="true">
                <image>
                   <Image url="@../../CSS/Dybvaaaaad.jpg" />
                </image>
             </ImageView>
          </children>
       </AnchorPane>
-      <ImageView fitHeight="68.0" fitWidth="124.0" layoutX="80.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="89.0" fitWidth="124.0" layoutX="43.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../CSS/Danish_TV_2_logo.png" />
          </image>
       </ImageView>
-      <TableView fx:id="tableView" layoutX="368.0" layoutY="380.0" onMouseClicked="#LoadMovie" prefHeight="200.0" prefWidth="322.0">
+      <TableView fx:id="tableView" layoutX="637.0" layoutY="350.0" onMouseClicked="#LoadMovie" prefHeight="200.0" prefWidth="322.0">
         <columns>
-            <TableColumn fx:id="idColumn" prefWidth="37.0" text="ID" />
-          <TableColumn fx:id="nameColumn" prefWidth="105.0" text="Name" />
-          <TableColumn fx:id="genreColumn" prefWidth="92.00006103515625" text="Genre" />
-            <TableColumn fx:id="releaseYearColumn" prefWidth="76.7999267578125" text="Release year" />
+            <TableColumn fx:id="idColumn" prefWidth="29.0" text="ID" />
+          <TableColumn fx:id="nameColumn" prefWidth="98.0" text="Titel" />
+          <TableColumn fx:id="genreColumn" prefWidth="102.0" text="Genre" />
+            <TableColumn fx:id="releaseYearColumn" text="Udgivelsesår" />
         </columns>
       </TableView>
    </children>
