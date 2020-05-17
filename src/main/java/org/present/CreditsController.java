@@ -12,6 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import org.data.Credits;
+import org.domain.CreditsDomain;
 import org.domain.PersistanceHandler;
 
 import java.io.IOException;
@@ -54,8 +55,6 @@ public class CreditsController implements Initializable {
         idColumn.setCellValueFactory(new PropertyValueFactory<Credits, Integer>("id"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<Credits, String>("name"));
         RoleColumn.setCellValueFactory(new PropertyValueFactory<Credits, String>("role"));
-
-        tableView.setItems(PersistanceHandler.getInstance().getCredits());
     }
 
 

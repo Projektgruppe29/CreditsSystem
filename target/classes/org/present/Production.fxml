@@ -9,7 +9,7 @@
         <Button fx:id="viewProductionButton" layoutX="83.0" layoutY="164.0" mnemonicParsing="false" onAction="#showProduction" prefHeight="25.0" prefWidth="119.0" text="Se Produktioner" />
         <Button fx:id="backButton" layoutX="14.0" layoutY="21.0" mnemonicParsing="false" onAction="#backToMainScene" prefHeight="25.0" prefWidth="23.0" styleClass="BackIcon" stylesheets="@../../CSS/BackArrow.css" />
         <Button fx:id="deleteProductionButton" layoutX="83.0" layoutY="216.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="119.0" text="Slet Produktion" />
-      <TableView fx:id="tableView" layoutX="239.0" layoutY="76.0" prefHeight="200.0" prefWidth="326.0">
+      <TableView fx:id="tableView" layoutX="239.0" layoutY="76.0" onMouseClicked="#CreateCreditForProduction" prefHeight="200.0" prefWidth="326.0">
         <columns>
           <TableColumn fx:id="idColumn" prefWidth="45.0" text="ID" />
           <TableColumn fx:id="nameColumn" prefWidth="105.0" text="Titel" />

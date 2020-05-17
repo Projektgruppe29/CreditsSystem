@@ -15,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import org.data.Production;
 import org.domain.PersistanceHandler;
+import org.domain.ProductionDomain;
 
 public class PrimaryController implements Initializable {
 
@@ -82,9 +83,9 @@ public class PrimaryController implements Initializable {
         tableView.setItems(sortedList);
     }
 
-    public void LoadMovie(MouseEvent mouseEvent) throws IOException, InterruptedException {
+    public void LoadProduction(MouseEvent mouseEvent) throws IOException, InterruptedException {
         Thread.sleep(500);
-        App.setRoot("viewFeatured");
+        App.setRoot("viewCredit");
     }
 
     public void viewProduction(ActionEvent actionEvent) {

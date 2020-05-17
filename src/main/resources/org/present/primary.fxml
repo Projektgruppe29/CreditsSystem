@@ -44,7 +44,7 @@
             <Image url="@../../CSS/Danish_TV_2_logo.png" />
          </image>
       </ImageView>
-      <TableView fx:id="tableView" layoutX="637.0" layoutY="350.0" onMouseClicked="#LoadMovie" prefHeight="200.0" prefWidth="322.0">
+      <TableView fx:id="tableView" layoutX="637.0" layoutY="350.0" onMouseClicked="#LoadProduction" prefHeight="200.0" prefWidth="322.0">
         <columns>
             <TableColumn fx:id="idColumn" prefWidth="29.0" text="ID" />
           <TableColumn fx:id="nameColumn" prefWidth="98.0" text="Titel" />

@@ -2,8 +2,6 @@ package org.data;
 
 import javafx.collections.ObservableList;
 
-import java.util.List;
-
 public interface IPersistanceHandler {
     public ObservableList<Credits> getCredits();
     public Credits getCredits(int id);
