@@ -10,6 +10,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.MouseEvent;
 import org.data.Credits;
 import org.domain.PersistanceHandler;
 
@@ -22,27 +23,24 @@ public class CreditsController implements Initializable {
     @FXML
     private TableView<Credits> tableView;
     @FXML
-    private TableColumn<Credits, String> fullNameColumn;
+    private TableColumn<Credits, Integer> idColumn;
     @FXML
-    private TableColumn<Credits, Integer> personIDColumn;
+    private TableColumn<Credits, String> nameColumn;
     @FXML
     private TableColumn<Credits, String> RoleColumn;
 
     @FXML
-    private TextField fullNameTextField;
+    private TextField nameTextField;
     @FXML
-    private TextField PersonIDTextField;
-    @FXML
-    private TextField RoleTextField;
+    private TextField roleTextField;
+
+    public void switchToProduction(ActionEvent actionEvent) throws IOException {
+        App.setRoot("Production");
+    }
 
     public void changeFullnameCellEvent(CellEditEvent fullNameCell) {
         Credits personSelected = tableView.getSelectionModel().getSelectedItem();
         personSelected.setName(fullNameCell.getNewValue().toString());
-    }
-
-    public void changePersonIDCellEvent(CellEditEvent editEvent) {
-        Credits personSelected = tableView.getSelectionModel().getSelectedItem();
-        personSelected.setName(editEvent.getNewValue().toString());
     }
 
     public void changeRoleCellEvent(CellEditEvent editEvent) {
@@ -53,39 +51,18 @@ public class CreditsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Set Columns
-        fullNameColumn.setCellValueFactory(new PropertyValueFactory<Credits, String>("fullName"));
-        personIDColumn.setCellValueFactory(new PropertyValueFactory<Credits, Integer>("PersonID"));
+        idColumn.setCellValueFactory(new PropertyValueFactory<Credits, Integer>("id"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<Credits, String>("name"));
         RoleColumn.setCellValueFactory(new PropertyValueFactory<Credits, String>("role"));
 
-        //Load own data
-        //tableView.setItems(getPeople());
-
-        //Update the table for allow for the fullname and role
-        tableView.setEditable(true);
-        fullNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        RoleColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        tableView.setItems(PersistanceHandler.getInstance().getCredits());
     }
 
-
-
-    public void AddToList(ActionEvent actionEvent) {
-        Credits newPerson = new Credits(new Integer(personIDColumn.getText()), fullNameTextField.getText(),RoleTextField.getText());
-
-        tableView.getItems().add(newPerson);
-    }
 
     private void clearList() {
-        fullNameTextField.clear();
-        PersonIDTextField.clear();
-        RoleTextField.clear();
+        nameTextField.clear();
+        roleTextField.clear();
     }
-
-
-    public void ConfirmList(ActionEvent actionEvent) {
-        PersistanceHandler.getInstance().getCredits().add(new Credits(new Integer(personIDColumn.getText()), fullNameTextField.getText(),RoleTextField.getText()));
-        clearList();
-    }
-
 
     public void deleteFromList(ActionEvent actionEvent) {
         ObservableList<Credits> selectedRows, allPeople;
@@ -99,22 +76,20 @@ public class CreditsController implements Initializable {
 
     }
 
-    public void switchToProduction(ActionEvent actionEvent) throws IOException {
-        App.setRoot("Production");
+    public void AddImage(MouseEvent mouseEvent) {
+
     }
 
+    public void CreateCredit(ActionEvent actionEvent) {
+        Credits newPerson = new Credits(new Integer(idColumn.getText()), nameTextField.getText(), roleTextField.getText());
 
-
-    //Check it works
-    /*
-    public ObservableList<Credits> getPeople() {
-        ObservableList<Credits> people = FXCollections.observableArrayList();
-        people.add(new Credits("Kasper Svane", 1, "actor"));
-
-        return people;
+        tableView.getItems().add(newPerson);
     }
 
-     */
-
+    public void AlterCredit(ActionEvent actionEvent) {
+        tableView.setEditable(true);
+        nameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        RoleColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+    }
 
 }

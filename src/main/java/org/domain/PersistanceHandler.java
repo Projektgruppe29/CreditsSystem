@@ -14,9 +14,9 @@ public class PersistanceHandler implements IPersistanceHandler {
     private static PersistanceHandler instance;
     private static String url = "";
     private static int port = 5432;
-    private static String databaseName = "Credit";
+    private static String databaseName = "DBData";
     private static String username = "postgres";
-    private static String password = "SDUDuller123";
+    private static String password = "postgres";
 
     private static Connection connection = null;
 
@@ -46,12 +46,12 @@ public class PersistanceHandler implements IPersistanceHandler {
     }
 
     @Override
-    public List<Credits> getCredits() {
+    public ObservableList<Credits> getCredits() {
         try{
             DBConnect();
             PreparedStatement queryStatement = connection.prepareStatement("SELECT * FROM credit");
             ResultSet rs = queryStatement.executeQuery();
-            List<Credits> returnValue = new ArrayList<>();
+            ObservableList<Credits> returnValue = FXCollections.observableArrayList();
             while(rs.next()) {
                 returnValue.add(new Credits(rs.getInt(1), rs.getString(2),rs.getString(3)));
             }
