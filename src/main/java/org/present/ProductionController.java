@@ -35,7 +35,6 @@ public class ProductionController implements Initializable {
         App.setRoot("primary");
     }
 
-    //productionValues.fxml
     public void switchToProduction(ActionEvent actionEvent) throws IOException {
         App.setRoot("Production");
     }
