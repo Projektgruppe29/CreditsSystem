@@ -5,6 +5,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import org.data.Production;
 import org.domain.PersistanceHandler;
+import org.domain.ProductionDomain;
+
 import java.io.IOException;
 
 public class productionValuesController {
@@ -19,7 +21,7 @@ public class productionValuesController {
     public Text releaseProductionYearColumn;
 
     public void confirmProduction(ActionEvent actionEvent) {
-        //PersistanceHandler.getInstance().createProduction(Production);
+        PersistanceHandler.getInstance().getProduction().add(new Production(Integer.parseInt(IDTextField.getText()), nameTextField.getText(), genreTextField.getText(), Integer.parseInt(releaseYearTextField.getText())));
         clearFields();
     }
 

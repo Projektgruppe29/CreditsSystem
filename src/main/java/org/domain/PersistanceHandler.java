@@ -5,8 +5,10 @@ import javafx.collections.ObservableList;
 import org.data.Credits;
 import org.data.IPersistanceHandler;
 import org.data.Production;
+
 import java.sql.*;
-import java.util.function.Consumer;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PersistanceHandler implements IPersistanceHandler {
     private static PersistanceHandler instance;
@@ -29,7 +31,6 @@ public class PersistanceHandler implements IPersistanceHandler {
         return instance;
     }
 
-    //Setting Postgres JDBC Driver
     public static Connection DBConnect() {
         try{
             DriverManager.registerDriver(new org.postgresql.Driver());
@@ -43,78 +44,6 @@ public class PersistanceHandler implements IPersistanceHandler {
         }
         return connection;
     }
-
-    //Closing Connection
-    public static void DBDisconnect() throws SQLException {
-        try{
-            if(connection !=null && !connection.isClosed()) {
-                connection.close();
-            }
-        } catch (Exception e) {
-            throw e;
-        }
-    }
-
-    public void execute(String sqlString, Object... args) throws SQLException {
-        PreparedStatement statement = null;
-        Connection connection = this.connection;
-        try{
-            statement = connection.prepareStatement(sqlString);
-            setArgs(statement, args);
-            statement.execute();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } finally {
-            DBDisconnect();
-        }
-    }
-
-    public void executeQuery(String sqlString, Consumer<ResultSet> callback, Object... args) throws SQLException {
-        PreparedStatement statement = null;
-        ResultSet rs = null;
-        Connection connection = this.connection;
-        try{
-            statement = connection.prepareStatement(sqlString);
-            setArgs(statement, args);
-            rs = statement.executeQuery();
-            callback.accept(rs);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } finally {
-            DBDisconnect();
-        }
-    }
-
-    public static void executeUpdate(String sqlString) throws SQLException {
-        Statement stmt = null;
-        try{
-            DBConnect();
-
-            stmt = connection.createStatement();
-
-            stmt.executeUpdate(sqlString);
-        } catch (SQLException e) {
-            throw e;
-        } finally {
-            if(stmt != null) {
-                stmt.close();
-            }
-            DBDisconnect();
-        }
-    }
-
-    private void setArgs(PreparedStatement statement, Object... args) {
-        int i = 1;
-        for(Object arg : args) {
-            try{
-                statement.setObject(i, arg);
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-            i++;
-        }
-    }
-
 
     @Override
     public ObservableList<Credits> getCredits() {
@@ -202,7 +131,6 @@ public class PersistanceHandler implements IPersistanceHandler {
     public boolean createProduction(Production production) {
         try{
             DBConnect();
-
             PreparedStatement statement = connection.prepareStatement("INSERT INTO production (name, genre, releaseyear)"
                     + "VALUES (?, ?, ?)");
             statement.setString(1, production.getName());
@@ -215,15 +143,6 @@ public class PersistanceHandler implements IPersistanceHandler {
         }
     }
 
-    public static void CreateProductionTable() throws SQLException{
-        try{
-            DBConnect();
-            PreparedStatement createTable = connection.prepareStatement("CREATE TABLE IF NOT EXISTS table(id int NOT NULL AUTO_INCREMENT, name VARCHAR(50), role VARCHAR(50), PRIMARY KEY(id))");
-            createTable.executeUpdate();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
 }
 
