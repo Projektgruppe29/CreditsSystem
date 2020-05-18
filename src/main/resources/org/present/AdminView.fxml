@@ -4,9 +4,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="814.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="814.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.present.AdminViewController">
    <children>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="40.0" styleClass="BackIcon" stylesheets="@../../CSS/BackArrow.css" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#sw" prefHeight="25.0" prefWidth="40.0" styleClass="BackIcon" stylesheets="@../../CSS/BackArrow.css" />
       <ListView layoutX="43.0" layoutY="100.0" prefHeight="158.0" prefWidth="142.0" />
       <TableView layoutX="213.0" layoutY="100.0" prefHeight="158.0" prefWidth="313.0">
         <columns>
@@ -17,7 +17,7 @@
         </columns>
       </TableView>
       <ListView layoutX="552.0" layoutY="100.0" prefHeight="158.0" prefWidth="217.0" />
-      <Button layoutX="552.0" layoutY="280.0" mnemonicParsing="false" text="Opret bruger" />
+      <Button layoutX="552.0" layoutY="280.0" mnemonicParsing="false" onAction="#switchToCreateUser" text="Opret bruger" />
       <Label layoutX="43.0" layoutY="70.0" text="Notifikationer">
          <font>
             <Font size="20.0" />
