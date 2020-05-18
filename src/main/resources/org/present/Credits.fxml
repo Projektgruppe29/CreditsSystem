@@ -1,29 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.CreditsController">
-   <children>
-      <TextField fx:id="ProductionName" layoutX="42.0" layoutY="56.0" promptText="Enter production name" />
-      <TextField fx:id="ProductionID" layoutX="226.0" layoutY="56.0" promptText="Enter associated ID" />
-      <TextField fx:id="fullNameTextField" layoutX="42.0" layoutY="116.0" promptText="Enter full name" />
-      <TextField fx:id="PersonIDTextField" layoutX="42.0" layoutY="175.0" promptText="Create unique ID" />
-      <TextField fx:id="RoleTextField" layoutX="42.0" layoutY="230.0" promptText="Actor, Producer or sound" />
-      <Button layoutX="69.0" layoutY="292.0" mnemonicParsing="false" onAction="#AddToList" prefHeight="25.0" prefWidth="96.0" text="Add to list" />
-      <Button layoutX="460.0" layoutY="354.0" mnemonicParsing="false" onAction="#ConfirmList" text="Confirm" />
-      <Label layoutX="87.0" layoutY="42.0" text="Production" />
-      <Label layoutX="265.0" layoutY="42.0" text="ProductionID" />
-      <Label layoutX="101.0" layoutY="99.0" text="Name" />
-      <Label layoutX="93.0" layoutY="158.0" text="PersonID" />
-      <Label layoutX="105.0" layoutY="213.0" text="Role" />
-      <Button layoutX="213.0" layoutY="292.0" mnemonicParsing="false" onAction="#deleteFromList" text="Delete from list" />
-      <TableView fx:id="tableView" layoutX="350.0" layoutY="88.0" prefHeight="200.0" prefWidth="236.0">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.present.CreditsController">
+    <children>
+        <Button fx:id="backButton" layoutX="35.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToProduction" prefHeight="25.0" prefWidth="32.0" styleClass="BackIcon" stylesheets="@../../CSS/BackArrow.css" />
+      <ImageView fx:id="ImageView" fitHeight="105.0" fitWidth="117.0" layoutX="35.0" layoutY="50.0" onMouseClicked="#AddImage" pickOnBounds="true" />
+      <Label fx:id="titleLabel" layoutX="37.0" layoutY="161.0" text="Titel">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TableView layoutX="35.0" layoutY="200.0" prefHeight="182.0" prefWidth="254.0">
         <columns>
-          <TableColumn fx:id="fullNameColumn" onEditCommit="#changeFullnameCellEvent" prefWidth="83.0" text="Full name" />
-          <TableColumn fx:id="personIDColumn" onEditCommit="#changePersonIDCellEvent" prefWidth="76.0" text="PersonID" />
-            <TableColumn fx:id="RoleColumn" onEditCommit="#changeRoleCellEvent" prefWidth="75.0" text="Role" />
+          <TableColumn fx:id="idColumn" prefWidth="32.0" text="ID" />
+          <TableColumn fx:id="nameColumn" prefWidth="109.0" text="Titel" />
+            <TableColumn fx:id="RoleColumn" prefWidth="97.0" text="Role" />
         </columns>
       </TableView>
-   </children>
+      <TextArea fx:id="areaText" layoutX="208.0" layoutY="50.0" prefHeight="105.0" prefWidth="306.0" promptText="Beskrivelse af produktionen">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextArea>
+      <Button fx:id="createCredditButton" layoutX="471.0" layoutY="254.0" mnemonicParsing="false" onAction="#CreateCredit" prefHeight="25.0" prefWidth="117.0" text="Opret kreditering" />
+      <Button fx:id="AlterCreditButton" layoutX="471.0" layoutY="312.0" mnemonicParsing="false" onAction="#AlterCredit" prefHeight="25.0" prefWidth="117.0" text="Ændre kreditering" />
+      <TextField fx:id="nameTextfield" layoutX="300.0" layoutY="254.0" />
+      <TextField fx:id="roleTextField" layoutX="300.0" layoutY="312.0" />
+      <Label layoutX="343.0" layoutY="231.0" text="Skriv navn" />
+      <Label layoutX="347.0" layoutY="291.0" text="Skriv role" />
+      <Label layoutX="105.0" layoutY="12.0" text="Opret Kreditering">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+    </children>
 </AnchorPane>

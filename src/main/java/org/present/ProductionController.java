@@ -1,32 +1,29 @@
 package org.present;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import org.domain.Production;
-import java.util.ArrayList;
-import org.data.db;
-
-
-
-import java.awt.*;
+import org.data.Production;
+import org.domain.PersistanceHandler;
+import java.net.URL;
 import java.io.IOException;
+import java.util.ResourceBundle;
 
-public class ProductionController extends Production {
-    public TextField ProductionNameTextField;
-    public TextField ProductionIDTextField;
-    public TextField ProductionReleaseTextField;
-    public TextField ProductionCountryTextField;
-    public TextField EpisodeCountTextField;
-    public TextField ProductionGenreTextField;
-    public ListView viewProduction;
-    private ObservableList<Production> productionObservableList;
-    private ArrayList<Production> tempUsers;
+public class ProductionController implements Initializable {
+    public TableView tableView;
+    @FXML
+    private TableColumn<Production, Integer> idColumn;
+    @FXML
+    private TableColumn<Production, String> nameColumn;
+    @FXML
+    private TableColumn<Production, String> genreColumn;
+    @FXML
+    private TableColumn<Production, Integer> releaseYearColumn;
+
 
     @FXML
     private void switchToProductionValues() throws IOException {
@@ -34,30 +31,34 @@ public class ProductionController extends Production {
     }
 
 
-    public void confirmProduction(ActionEvent actionEvent) {
-        db.getList().add(new Production(ProductionNameTextField.getText(), Integer.parseInt(ProductionIDTextField.getText()), Integer.parseInt(ProductionReleaseTextField.getText()),
-                ProductionCountryTextField.getText(), Integer.parseInt(EpisodeCountTextField.getText()), ProductionGenreTextField.getText()));
-        clearFields();
-    }
-    private void clearFields() {
-        ProductionNameTextField.clear();
-        ProductionIDTextField.clear();
-        ProductionReleaseTextField.clear();
-        ProductionCountryTextField.clear();
-        EpisodeCountTextField.clear();
-        ProductionGenreTextField.clear();
+    public void backToMainScene(ActionEvent actionEvent) throws IOException {
+        App.setRoot("primary");
     }
 
-    public void getProductionList(ActionEvent actionEvent) {
-        viewProduction.setItems(FXCollections.observableArrayList(db.getList()));
-    }
-
-    public void showProduction(MouseEvent mouseEvent) {
-
-
-    }
-
+    //productionValues.fxml
     public void switchToProduction(ActionEvent actionEvent) throws IOException {
         App.setRoot("Production");
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        setCellTable();
+    }
+
+    private void setCellTable() {
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        genreColumn.setCellValueFactory(new PropertyValueFactory<>("genre"));
+        releaseYearColumn.setCellValueFactory(new PropertyValueFactory<>("releaseYear"));
+    }
+
+    public void showProduction(ActionEvent actionEvent) {
+        tableView.setItems(PersistanceHandler.getInstance().getProduction());
+    }
+
+
+    public void CreateCreditForProduction(MouseEvent mouseEvent) throws IOException, InterruptedException {
+        Thread.sleep(500);
+        App.setRoot("Credits");
     }
 }
