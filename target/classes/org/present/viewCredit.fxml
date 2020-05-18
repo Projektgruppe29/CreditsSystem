@@ -17,7 +17,7 @@
         <TableView layoutX="272.0" layoutY="200.0" prefHeight="182.0" prefWidth="306.0">
             <columns>
                 <TableColumn fx:id="idColumn" prefWidth="32.0" text="ID" />
-                <TableColumn fx:id="nameColumn" prefWidth="134.0" text="Titel" />
+                <TableColumn fx:id="nameColumn" prefWidth="134.0" text="Navn" />
                 <TableColumn fx:id="RoleColumn" prefWidth="122.0" text="Role" />
             </columns>
         </TableView>
