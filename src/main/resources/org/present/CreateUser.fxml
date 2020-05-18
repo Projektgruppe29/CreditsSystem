@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.present.createUserController">
+    <children>
+        <Button fx:id="Confirm" layoutX="157.0" layoutY="361.0" mnemonicParsing="false" text="Confirm">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Button>
+        <Text layoutX="92.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Opret bruger">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Text>
+        <TextField fx:id="fNameTextField" layoutX="92.0" layoutY="114.0" prefHeight="25.0" prefWidth="192.0" promptText="Indtast fornavn" />
+        <TextField fx:id="lNameTextField" layoutX="341.0" layoutY="114.0" prefHeight="25.0" prefWidth="192.0" promptText="Indtast efternavn" />
+        <TextField fx:id="birthdayTextField" layoutX="92.0" layoutY="175.0" prefHeight="25.0" prefWidth="192.0" promptText="Indtast fødselsdato (xx-xxxx)" />
+        <TextField fx:id="IdTextField" layoutX="341.0" layoutY="175.0" prefHeight="25.0" prefWidth="192.0" promptText="Indtast brugerens ID" />
+
+        <Button fx:id="backButton" layoutX="24.0" layoutY="24.0" mnemonicParsing="false" onAction="#switchToAdminView" prefWidth="32.0" styleClass="BackIcon" stylesheets="@../../CSS/BackArrow.css" />
+        <Text fx:id="idProductionColumn" layoutX="159.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fornavn" wrappingWidth="61.99999451637268" />
+        <Text fx:id="nameProductionColumn" layoutX="400.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Efternavn" />
+        <Text fx:id="genreProductionColumn" layoutX="419.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID" />
+        <Text fx:id="releaseProductionYearColumn" layoutX="15.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Text fx:id="genreProductionColumn1" layoutX="156.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fødselsdato" />
+      <CheckBox fx:id="producerCheckBox" layoutX="402.0" layoutY="275.0" mnemonicParsing="false" text="Producer" />
+      <CheckBox fx:id="admin_checkBox" layoutX="121.0" layoutY="275.0" mnemonicParsing="false" text="Administrator" />
+      <TextField fx:id="usernameTextField" layoutX="94.0" layoutY="229.0" prefHeight="25.0" prefWidth="192.0" promptText="Indtast brugernavn" />
+      <TextField fx:id="passwordTextField" layoutX="341.0" layoutY="229.0" prefHeight="25.0" prefWidth="192.0" promptText="Indtast kodeord" />
+      <Text layoutX="158.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brugernavn" />
+      <Text layoutX="408.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kodeord" />
+    </children>
+</AnchorPane>
