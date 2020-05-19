@@ -22,13 +22,19 @@ public class User {
 
     public String getUserName() { return userName; }
 
+    //constructor without enum priviledge
     public User(int userID, String userName, String password) {
         this.userID = userID;
         this.userName = userName;
         this.password = password;
     }
 
-
+    //constructor with enum priviledge
+    public User(int userID, String userName, String password, Priviledge priviledge) {
+        this.userID = userID;
+        this.userName = userName;
+        this.password = password;
+    }
 
     public boolean login(String password){
         return this.password.equals(password);
