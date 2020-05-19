@@ -9,6 +9,6 @@ public interface IPersistanceHandler {
 
     public ObservableList<Production> getProduction();
     public Production getProduction(int id);
-    public boolean createProduction(Production production);
+    public void createProduction(Production production);
 
 }

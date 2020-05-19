@@ -128,7 +128,7 @@ public class PersistanceHandler implements IPersistanceHandler {
     }
 
     @Override
-    public boolean createProduction(Production production) {
+    public void createProduction(Production production) {
         try{
             DBConnect();
             PreparedStatement statement = connection.prepareStatement("INSERT INTO production (name, genre, releaseyear)"
@@ -136,11 +136,14 @@ public class PersistanceHandler implements IPersistanceHandler {
             statement.setString(1, production.getName());
             statement.setString(2, production.getGenre());
             statement.setInt(3, production.getReleaseYear());
-            return statement.execute();
+            statement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
         }
+    }
+
+    public void createProduction(String name, String genre, int releaseYear) {
+        createProduction(new Production(name, genre, releaseYear));
     }
 
 

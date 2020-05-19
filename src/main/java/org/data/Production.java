@@ -11,6 +11,12 @@ public class Production {
     public int episodeCount;
     public String genre;
 
+    public Production(String name, String genre, int releaseYear) {
+        this.name = name;
+        this.genre = genre;
+        this.releaseYear = releaseYear;
+    }
+
     public Production(int id, String name, String genre, int releaseYear) {
         this.id = id;
         this.name = name;
@@ -18,24 +24,7 @@ public class Production {
         this.releaseYear = releaseYear;
     }
 
-    public Production(int id, String name, int productionID, int releaseYear, String productionCountry, int episodeCount, String genre) {
-        this.id = id;
-        this.name = name;
-        this.productionID = productionID;
-        this.releaseYear = releaseYear;
-        this.productionCountry = productionCountry;
-        this.episodeCount = episodeCount;
-        this.genre = genre;
-    }
 
-    public Production( String name, int productionID, int releaseYear, String productionCountry, int episodeCount, String genre) {
-        this.name = name;
-        this.productionID = productionID;
-        this.releaseYear = releaseYear;
-        this.productionCountry = productionCountry;
-        this.episodeCount = episodeCount;
-        this.genre = genre;
-    }
 
 
     public String toString(){

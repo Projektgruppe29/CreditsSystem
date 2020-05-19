@@ -61,6 +61,7 @@ public class ProductionController implements Initializable {
         App.setRoot("Credits");
     }
 
+    /*
     public boolean createProduction(ProductionType type,
                                     @Nullable UUID uuid,
                                     String title,
@@ -86,4 +87,6 @@ public class ProductionController implements Initializable {
 
         return false;
     }
+
+     */
 }
