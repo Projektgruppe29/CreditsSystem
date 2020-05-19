@@ -21,8 +21,6 @@
                   <Font size="30.0" />
                </font>
             </Label>
-            <Hyperlink fx:id="forgotPasswordButton" layoutX="114.0" layoutY="378.0" text="Glemt kodeord?" textFill="#fcf8f8" underline="true" />
-            <Hyperlink fx:id="requestButton" layoutX="115.0" layoutY="340.0" text="Request account" textFill="#f5f2f2" underline="true" />
          </children>
       </AnchorPane>
       <ImageView fitHeight="625.0" fitWidth="618.0" layoutY="-9.0" pickOnBounds="true" preserveRatio="true">

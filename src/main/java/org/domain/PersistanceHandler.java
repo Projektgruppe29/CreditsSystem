@@ -131,7 +131,7 @@ public class PersistanceHandler implements IPersistanceHandler {
     public void createProduction(Production production) {
         try{
             DBConnect();
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO production (name, genre, releaseyear)"
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO production (titel, genre, release_year)"
                     + "VALUES (?, ?, ?)");
             statement.setString(1, production.getName());
             statement.setString(2, production.getGenre());
@@ -144,6 +144,16 @@ public class PersistanceHandler implements IPersistanceHandler {
 
     public void createProduction(String name, String genre, int releaseYear) {
         createProduction(new Production(name, genre, releaseYear));
+    }
+
+    public static void CreateProductionTable() throws SQLException{
+        try{
+            DBConnect();
+            PreparedStatement createTable = connection.prepareStatement("CREATE TABLE IF NOT EXISTS table(id int NOT NULL AUTO_INCREMENT, name VARCHAR(50), role VARCHAR(50), PRIMARY KEY(id))");
+            createTable.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 

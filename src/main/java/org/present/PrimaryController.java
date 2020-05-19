@@ -15,7 +15,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import org.data.Production;
 import org.domain.PersistanceHandler;
-import org.domain.ProductionDomain;
 
 public class PrimaryController implements Initializable {
 
