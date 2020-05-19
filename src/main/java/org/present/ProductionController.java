@@ -60,4 +60,30 @@ public class ProductionController implements Initializable {
         Thread.sleep(500);
         App.setRoot("Credits");
     }
+
+    public boolean createProduction(ProductionType type,
+                                    @Nullable UUID uuid,
+                                    String title,
+                                    String internalId,
+                                    String description,
+                                    Image image,
+                                    Set<Genre> genres,
+                                    int length,
+                                    float rating,
+                                    int year,
+                                    List<ProductionPerson> persons) {
+        if (title == null || title.matches("\\s*")) return false;
+        switch (type) {
+            case MOVIE:
+                return createMovie(uuid == null ? getRandomUUID() : uuid, title, internalId, description, image, genres, length, rating, year, persons);
+            case SERIES:
+                return createSeries(uuid == null ? getRandomUUID() : uuid, title, internalId, image, description, genres);
+            case SEASON:
+                return createSeason(uuid == null ? getRandomUUID() : uuid, title, internalId, description);
+            case EPISODE:
+                return createEpisode(uuid == null ? getRandomUUID() : uuid, title, internalId, description, length, rating, year, persons);
+        }
+
+        return false;
+    }
 }
