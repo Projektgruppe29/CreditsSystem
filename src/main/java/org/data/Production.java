@@ -18,26 +18,6 @@ public class Production {
         this.releaseYear = releaseYear;
     }
 
-    public Production(int id, String name, int productionID, int releaseYear, String productionCountry, int episodeCount, String genre) {
-        this.id = id;
-        this.name = name;
-        this.productionID = productionID;
-        this.releaseYear = releaseYear;
-        this.productionCountry = productionCountry;
-        this.episodeCount = episodeCount;
-        this.genre = genre;
-    }
-
-    public Production( String name, int productionID, int releaseYear, String productionCountry, int episodeCount, String genre) {
-        this.name = name;
-        this.productionID = productionID;
-        this.releaseYear = releaseYear;
-        this.productionCountry = productionCountry;
-        this.episodeCount = episodeCount;
-        this.genre = genre;
-    }
-
-
     public String toString(){
         return name;
     }
@@ -58,9 +38,7 @@ public class Production {
         this.name = name;
     }
 
-    public int getProductionID() {
-        return productionID;
-    }
+    public int getProductionID() { return productionID; }
 
     public void setProductionID(int productionID) {
         this.productionID = productionID;
@@ -72,22 +50,6 @@ public class Production {
 
     public void setReleaseYear(int releaseYear) {
         this.releaseYear = releaseYear;
-    }
-
-    public String getProductionCountry() {
-        return productionCountry;
-    }
-
-    public void setProductionCountry(String productionCountry) {
-        this.productionCountry = productionCountry;
-    }
-
-    public int getEpisodeCount() {
-        return episodeCount;
-    }
-
-    public void setEpisodeCount(int episodeCount) {
-        this.episodeCount = episodeCount;
     }
 
     public String getGenre() {
