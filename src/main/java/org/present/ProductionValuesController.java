@@ -9,7 +9,7 @@ import org.domain.ProductionDomain;
 
 import java.io.IOException;
 
-public class productionValuesController {
+public class ProductionValuesController {
     public TextField IDTextField;
     public TextField nameTextField;
     public TextField genreTextField;
