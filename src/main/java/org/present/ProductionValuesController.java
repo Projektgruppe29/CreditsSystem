@@ -21,7 +21,8 @@ public class ProductionValuesController {
     public Text releaseProductionYearColumn;
 
     public void confirmProduction(ActionEvent actionEvent) {
-        PersistanceHandler.getInstance().getProduction().add(new Production(Integer.parseInt(IDTextField.getText()), nameTextField.getText(), genreTextField.getText(), Integer.parseInt(releaseYearTextField.getText())));
+        PersistanceHandler.getInstance().getProduction().add(new Production(Integer.parseInt(IDTextField.getText()),
+                nameTextField.getText(), genreTextField.getText(), Integer.parseInt(releaseYearTextField.getText())));
         clearFields();
     }
 

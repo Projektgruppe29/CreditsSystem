@@ -38,9 +38,7 @@ public class Production {
         this.name = name;
     }
 
-    public int getProductionID() {
-        return productionID;
-    }
+    public int getProductionID() { return productionID; }
 
     public void setProductionID(int productionID) {
         this.productionID = productionID;
