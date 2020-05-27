@@ -6,11 +6,6 @@ public class Credits {
     private String name;
     private String role;
 
-    public Credits(int id, String name, String role) {
-        this.id = id;
-        this.name = name;
-        this.role = role;
-    }
 
     public Credits(int id, int cast_id, String name, String role) {
         this.id = id;

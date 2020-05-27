@@ -28,7 +28,7 @@
       </Label>
       <Label layoutX="44.0" layoutY="442.0" text="Skriv ID" />
       <TextField fx:id="idTextField" layoutX="44.0" layoutY="459.0" />
-      <Label fx:id="productionID" layoutX="44.0" layoutY="384.0" text="Skriv ProduktionsID" />
+      <Label fx:id="productionId" layoutX="44.0" layoutY="384.0" text="Skriv ProduktionsID" />
       <TextField fx:id="productionIDTextField" layoutX="44.0" layoutY="401.0" />
         <TableView fx:id="tableView" layoutX="35.0" layoutY="152.0" prefHeight="222.0" prefWidth="493.0">
             <columns>

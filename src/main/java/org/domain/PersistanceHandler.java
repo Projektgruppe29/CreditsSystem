@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import org.data.Credits;
 import org.data.IPersistanceHandler;
 import org.data.Production;
+import org.data.User;
 
 import java.sql.*;
 
@@ -14,7 +15,7 @@ public class PersistanceHandler implements IPersistanceHandler {
     private static int port = 5432;
     private static String databaseName = "DBData";
     private static String username = "postgres";
-    private static String password = "postgres";
+    private static String password = "SDUDuller123";
 
     private static Connection connection = null;
 
@@ -42,25 +43,6 @@ public class PersistanceHandler implements IPersistanceHandler {
         }
         return connection;
     }
-/*
-    @Override
-    public ObservableList<Credits> getCredits() {
-        try{
-            DBConnect();
-            PreparedStatement queryStatement = connection.prepareStatement("SELECT * FROM credit");
-            ResultSet rs = queryStatement.executeQuery();
-            ObservableList<Credits> returnValue = FXCollections.observableArrayList();
-            while(rs.next()) {
-                returnValue.add(new Credits(rs.getInt(1), rs.getString(2),rs.getString(3)));
-            }
-            return returnValue;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
- */
 
     @Override
     public ObservableList<Credits> getCredits() {
@@ -88,7 +70,6 @@ public class PersistanceHandler implements IPersistanceHandler {
             ResultSet rs = queryStatement.executeQuery();
             ObservableList<Credits> returnValue = FXCollections.observableArrayList();
             if(rs.next()) {
-                System.out.println(rs.getInt(2));
                 returnValue.add(new Credits(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4)));
                 return returnValue;
             }
@@ -102,12 +83,10 @@ public class PersistanceHandler implements IPersistanceHandler {
     public void createCredits(Credits credits) {
         try{
             DBConnect();
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO credit (movie_id, cast_id, name, role)"
-                    + "VALUES (?, ?, ?, ?)");
-            statement.setInt(1, credits.getId());
-            statement.setInt(2, credits.getCastID());
-            statement.setString(3, credits.getName());
-            statement.setString(4, credits.getRole());
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO credit (name, role)"
+                    + "VALUES (?, ?)");
+            statement.setString(1, credits.getName());
+            statement.setString(2, credits.getRole());
             statement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -160,6 +139,23 @@ public class PersistanceHandler implements IPersistanceHandler {
             statement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    public User loginToSystem(String username) {
+        try{
+            DBConnect();
+            PreparedStatement queryStatement = connection.prepareStatement("SELECT * FROM login WHERE username = ?");
+            queryStatement.setInt(1, Integer.parseInt(username));
+            ResultSet rs = queryStatement.executeQuery();
+            if(rs.next()) {
+                return null;
+            }
+            return new User(rs.getString(1), rs.getString(2));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 

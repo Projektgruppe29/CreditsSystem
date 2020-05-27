@@ -24,7 +24,8 @@ public class Production {
         this.releaseYear = releaseYear;
     }
 
-
+    public Production(String name, int anInt) {
+    }
 
 
     public String toString(){

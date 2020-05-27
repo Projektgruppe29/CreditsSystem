@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.present.ViewCreditController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.present.ViewCreditController">
     <children>
         <Label fx:id="titleLabel" layoutX="35.0" layoutY="50.0" text="Titel">
             <font>
@@ -13,9 +15,10 @@
         </Label>
         <TableView fx:id="tableView" layoutX="54.0" layoutY="146.0" prefHeight="222.0" prefWidth="497.0">
             <columns>
-                <TableColumn fx:id="castIdColumn" prefWidth="32.0" text="ID" />
-                <TableColumn fx:id="titelColumn" prefWidth="255.0" text="Titel" />
-                <TableColumn fx:id="roleColumn" prefWidth="187.0" text="Role" />
+                <TableColumn fx:id="idColumn" prefWidth="38.39996337890625" text="ID" />
+            <TableColumn fx:id="castIdColumn" prefWidth="68.800048828125" text="CastID" />
+                <TableColumn fx:id="titelColumn" prefWidth="211.20001220703125" text="Titel" />
+                <TableColumn fx:id="roleColumn" minWidth="0.0" prefWidth="160.0" text="Role" />
             </columns>
         </TableView>
     </children>

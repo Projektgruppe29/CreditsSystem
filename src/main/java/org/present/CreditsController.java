@@ -58,14 +58,14 @@ public class CreditsController implements Initializable {
         setCellTable();
 
         tableView.setItems(PersistanceHandler.getInstance().getCredits(ProductionController.getIds()));
-        titleLabel.setText(PrimaryController.getCurrentName());
+        titleLabel.setText(ProductionController.getNames());
 
     }
 
 
     private void setCellTable() {
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-        castIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        castIdColumn.setCellValueFactory(new PropertyValueFactory<>("castID"));
         titelColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         roleColumn.setCellValueFactory(new PropertyValueFactory<>("role"));
     }

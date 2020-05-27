@@ -24,6 +24,8 @@ public class ViewCreditController implements Initializable {
 
     public TableView tableView;
     @FXML
+    private TableColumn<Credits, String> idColumn;
+    @FXML
     private TableColumn<Credits, String> castIdColumn;
     @FXML
     private TableColumn<Credits, String> titelColumn;
@@ -47,7 +49,8 @@ public class ViewCreditController implements Initializable {
 
 
     private void setCellTable() {
-        castIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        castIdColumn.setCellValueFactory(new PropertyValueFactory<>("castID"));
         titelColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         roleColumn.setCellValueFactory(new PropertyValueFactory<>("role"));
     }

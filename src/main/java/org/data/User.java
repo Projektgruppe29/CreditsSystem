@@ -14,12 +14,6 @@ public class User {
     private User currentUser;
     private ArrayList<User> users;
 
-    enum Priviledge{
-        Sysadmin,
-        Producer,
-        Admin
-    }
-
     public String getUserName() { return userName; }
 
     public User(int userID, String userName, String password) {
@@ -28,11 +22,16 @@ public class User {
         this.password = password;
     }
 
+    public User(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+    }
 
 
     public boolean login(String password){
         return this.password.equals(password);
     }
+
 
     public User(){
         this.users=new ArrayList<>();
