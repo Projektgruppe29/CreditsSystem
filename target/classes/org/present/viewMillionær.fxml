@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.present.FeaturedController">
+<AnchorPane prefHeight="522.0" prefWidth="705.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.present.FeaturedController">
     <children>
         <Label fx:id="movieName" layoutX="30.0" layoutY="48.0" text="Hvem vil være Millionær?">
             <font>
@@ -17,45 +17,51 @@
                 <Image url="@../../CSS/Millionær.jpg" />
             </image>
         </ImageView>
-        <Label layoutX="317.0" layoutY="39.0" text="CAST">
-            <font>
-                <Font size="30.0" />
-            </font>
-        </Label>
-        <Label layoutX="317.0" layoutY="80.0" text="Chefinstruktør">
+        <Label layoutX="422.0" layoutY="65.0" text="Værter">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <Label layoutX="365.0" layoutY="123.0" text="Thomas Rathsack" />
-        <ImageView fitHeight="45.0" fitWidth="41.0" layoutX="317.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
+        <Label layoutX="504.0" layoutY="122.0" text="Peter Kær" />
+        <ImageView fitHeight="76.0" fitWidth="73.0" layoutX="416.0" layoutY="92.0" pickOnBounds="true">
             <image>
-                <Image url="@../../CSS/Thomas.jpg" />
+                <Image url="@../../CSS/Peter_kær.png" />
             </image>
         </ImageView>
-        <Label layoutX="317.0" layoutY="169.0" text="Instruktør">
-            <font>
-                <Font size="20.0" />
-            </font>
-        </Label>
-        <Label layoutX="365.0" layoutY="211.0" text="Erik Jørgensen" />
-        <Label layoutX="365.0" layoutY="264.0" text="Magnus Hansson" />
-        <Label layoutX="365.0" layoutY="314.0" text="Rune Danielsen" />
-        <ImageView fitHeight="62.0" fitWidth="30.0" layoutX="317.0" layoutY="197.0" pickOnBounds="true" preserveRatio="true">
+        <Label layoutX="505.0" layoutY="283.0" text="Jes Dorph-Petersen" />
+        <Label layoutX="504.0" layoutY="203.0" text="Hans Pilgaard" />
+        <Label layoutX="501.0" layoutY="370.0" text="Christian Degn" />
+        <ImageView fitHeight="76.0" fitWidth="73.0" layoutX="416.0" layoutY="253.0" pickOnBounds="true">
             <image>
-                <Image url="@../../CSS/Erik.jpg" />
+                <Image url="@../../CSS/Jes_dorph.jpg" />
             </image>
         </ImageView>
-        <ImageView fitHeight="62.0" fitWidth="30.0" layoutX="317.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="76.0" fitWidth="73.0" layoutX="416.0" layoutY="173.0" pickOnBounds="true">
             <image>
-                <Image url="@../../CSS/Magnus.jpg" />
+                <Image url="@../../CSS/Hans_pilgaard.jpg" />
             </image>
         </ImageView>
-        <ImageView fitHeight="61.0" fitWidth="30.0" layoutX="317.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="76.0" fitWidth="73.0" layoutX="416.0" layoutY="340.0" pickOnBounds="true">
             <image>
-                <Image url="@../../CSS/Rune.jpg" />
+                <Image url="@../../CSS/Christian_Degn.jpg" />
             </image>
         </ImageView>
         <Button fx:id="backButton" layoutX="30.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToMainScene" prefHeight="25.0" prefWidth="30.0" styleClass="BackIcon" stylesheets="@../../CSS/BackArrow.css" />
+      <Label layoutX="414.0" layoutY="424.0" text="Medvirkende">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="502.0" layoutY="476.0" text="Almindelige og kendte danskere" />
+      <Label layoutX="46.0" layoutY="253.0" text="Genre">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="46.0" layoutY="291.0" text="Quiz">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>
