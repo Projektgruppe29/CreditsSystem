@@ -69,15 +69,14 @@ public class PersistanceHandler implements IPersistanceHandler {
             queryStatement.setInt(1, id);
             ResultSet rs = queryStatement.executeQuery();
             ObservableList<Credits> returnValue = FXCollections.observableArrayList();
-            if(rs.next()) {
+            while(rs.next()) {
                 returnValue.add(new Credits(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4)));
-                return returnValue;
             }
+            return returnValue;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
         }
-        return null;
     }
 
     public void createCredits(Credits credits) {
@@ -141,23 +140,6 @@ public class PersistanceHandler implements IPersistanceHandler {
             statement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-    }
-
-    @Override
-    public User loginToSystem(String username) {
-        try{
-            DBConnect();
-            PreparedStatement queryStatement = connection.prepareStatement("SELECT * FROM login WHERE username = ?");
-            queryStatement.setInt(1, Integer.parseInt(username));
-            ResultSet rs = queryStatement.executeQuery();
-            if(rs.next()) {
-                return null;
-            }
-            return new User(rs.getString(1), rs.getString(2));
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
         }
     }
 

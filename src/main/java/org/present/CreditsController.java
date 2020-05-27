@@ -1,24 +1,15 @@
 package org.present;
 
-import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.input.MouseEvent;
 import org.data.Credits;
-import org.data.Production;
 import org.domain.PersistanceHandler;
-
-import javax.swing.*;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -34,7 +25,8 @@ public class CreditsController implements Initializable {
     private TableColumn<Credits, String> titelColumn;
     @FXML
     private TableColumn<Credits, String> roleColumn;
-
+    @FXML
+    private TextField idTextField;
     @FXML
     private TextField productionIDTextField;
     @FXML
@@ -42,15 +34,7 @@ public class CreditsController implements Initializable {
     @FXML
     private TextField roleTextField;
     @FXML
-    private TextField idTextField;
-
-    @FXML
     Label titleLabel;
-
-    public void switchToProduction(ActionEvent actionEvent) throws IOException {
-        App.setRoot("Production");
-    }
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -62,7 +46,6 @@ public class CreditsController implements Initializable {
 
     }
 
-
     private void setCellTable() {
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         castIdColumn.setCellValueFactory(new PropertyValueFactory<>("castID"));
@@ -70,10 +53,12 @@ public class CreditsController implements Initializable {
         roleColumn.setCellValueFactory(new PropertyValueFactory<>("role"));
     }
 
-
     public void CreateCredit(ActionEvent actionEvent) {
-        PersistanceHandler.getInstance().createCredits(new Credits(Integer.parseInt(idTextField.getText()),
-                Integer.parseInt(productionIDTextField.getText()), nameTextField.getText(), roleTextField.getText()));
+        int id = Integer.parseInt(idTextField.getText());
+        int castId = Integer.parseInt(productionIDTextField.getText());
+        PersistanceHandler.getInstance().createCredits(new Credits(castId,
+                id, nameTextField.getText(), roleTextField.getText()));
+        tableView.setItems(PersistanceHandler.getInstance().getCredits(ProductionController.getIds()));
         clearFields();
 
     }
@@ -83,11 +68,6 @@ public class CreditsController implements Initializable {
         idTextField.clear();
         nameTextField.clear();
         roleTextField.clear();
-    }
-
-    public void AlterCredit(ActionEvent actionEvent) {
-        tableView.setEditable(true);
-
     }
 
 }

@@ -23,16 +23,18 @@ alter table production
 //Oprettelse af krediteringstabellen
 create table credit
 (
-	movie_id int not null
-		constraint credit_movie_id_fkey
-			references production
-				on delete cascade,
-	cast_id int not null
-		constraint credit_cast_id_fkey
-			references production
-				on delete cascade,
-	name varchar(50) not null,
-	role varchar(50) not null
+    movie_id integer     not null
+        constraint credit___movie_id_fkey
+            references production
+            on delete cascade,
+    cast_id  integer     not null
+        constraint credit___cast_id_fkey
+            references production
+            on delete cascade,
+    name     varchar(50) not null,
+    role     varchar(50) not null,
+    constraint credit_pk
+        primary key (movie_id, cast_id)
 );
 
 create unique index credit__pk
@@ -45,22 +47,12 @@ alter table credit
 //Oprettelse af login tabellen
 create table login
 (
-	id int not null,
+	id serial not null,
 	username varchar(50) not null,
-	password int not null,
+	password int not null
 );
 
-create unique index login__pk
-	on login (id);
-
-create unique index login_id_uindex
-	on login (id);
-
-alter table login
-	add constraint login_pk
-		primary key (id);
-
-//Indsættelse af 3 produktioner
+//Indsættelse af 5 produktioner
 INSERT INTO production (titel, genre, release_year)
 VALUES ('Armadillo', 'Dokumentar', 2010);
 
@@ -68,26 +60,77 @@ INSERT INTO production (titel, genre, release_year)
 VALUES ('Blå Mænd', 'Komedie', 2008);
 
 INSERT INTO production (titel, genre, release_year)
-VALUES ('De Grønne Slagtere', 'Komedie', 2003);
+VALUES ('Alle for to', 'Komedie', 2013);
+
+INSERT INTO production (titel, genre, release_year)
+VALUES ('Under Sandet', 'Krigsdrama', 2015);
+
+INSERT INTO production (titel, genre, release_year)
+VALUES ('Flyvende Farmor', 'Familiefilm', 2001);
 
 
-//Indsættelse af 3 krediteringer
+//Indsættelse af krediteringer i produktionen Armadillo
 INSERT INTO credit (movie_id, cast_id, name, role)
 VALUES (1, 1, 'Ronnie Fridthjof', 'Producer');
 
 INSERT INTO credit (movie_id, cast_id, name, role)
-VALUES (2, 1, 'Thure Lindhardt', 'Jesper Jensen');
+VALUES (1, 2, 'Sara Stockmann', 'Producer');
 
 INSERT INTO credit (movie_id, cast_id, name, role)
-VALUES (2, 2, 'Mick Øgendahl', 'Dion Drejer');
+VALUES (1, 3, 'Janus Metz', 'Instruktør, Manuskript');
+
+INSERT INTO credit (movie_id, cast_id, name, role)
+VALUES (1, 4, 'Hold 7 - DK', 'Danske Soldater');
+
+
+//Indsættelse af krediteringer i produktionen Blå Mænd
+INSERT INTO credit (movie_id, cast_id, name, role)
+VALUES (2, 1, 'Rasmus Heide', 'Instruktør, Manuskript');
+
+INSERT INTO credit (movie_id, cast_id, name, role)
+VALUES (2, 2, 'Mick Øgendahl', 'Dion Drejer, Manuskript');
+
+INSERT INTO credit (movie_id, cast_id, name, role)
+VALUES (2, 3, 'Thure Lindhardt', 'Jesper Jensen');
+
+INSERT INTO credit (movie_id, cast_id, name, role)
+VALUES (2, 4, 'Sidse Babett Knudsen', 'Lotte Markman');
+
+INSERT INTO credit (movie_id, cast_id, name, role)
+VALUES (2, 5, 'Martin Brygmann', 'Kørelærer');
+
+//Indsættelse af krediteringer i produktionen Alle for to
+INSERT INTO credit (movie_id, cast_id, name, role)
+VALUES (3, 1, 'Ronnie Fridthjof', 'Producer');
+
+INSERT INTO credit (movie_id, cast_id, name, role)
+VALUES (3, 2, 'Rasmus Heide', 'Instruktør');
+
+INSERT INTO credit (movie_id, cast_id, name, role)
+VALUES (3, 3, 'Mick Øgendahl', 'Ralf');
+
+INSERT INTO credit (movie_id, cast_id, name, role)
+VALUES (3, 4, 'Rasmus Bjerg', 'Timo');
+
+INSERT INTO credit (movie_id, cast_id, name, role)
+VALUES (3, 5, 'Jonatan Spang', 'Nikolai');
+
+
+//Indsættelse af krediteringer i produktionen Under Sandet
+INSERT INTO credit (movie_id, cast_id, name, role)
+VALUES (4, 1, 'Roland Møller', 'Sgt. Carl Rasmussen');
+
+//Indsættelse af krediteringer i produktionen Flyvende Farmor
 
 
 //Indsættelse af 3 brugere i systemet
 INSERT INTO login (username, password)
-VALUES ('Jhon', 12345, 1);
+VALUES ('Kasper', 12345);
 
 INSERT INTO login (username, password)
-VALUES ('David', 09876, 2);
+VALUES ('Daniel', 23456);
 
 INSERT INTO login (username, password)
-VALUES ('Stefan', 55667, 3);
+VALUES ('Andreas', 34567);
+
+

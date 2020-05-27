@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.util.ResourceBundle;
 
 public class ProductionController implements Initializable {
+
     public TableView tableView;
     @FXML
     private TableColumn<Production, Integer> idColumn;
@@ -31,7 +32,6 @@ public class ProductionController implements Initializable {
     private TableColumn<Production, Integer> releaseYearColumn;
     private static int ids;
     private static String names;
-
     Production production;
 
 
@@ -39,7 +39,6 @@ public class ProductionController implements Initializable {
     private void switchToProductionValues() throws IOException {
         App.setRoot("productionValues");
     }
-
 
     public void backToMainScene(ActionEvent actionEvent) throws IOException {
         App.setRoot("primary");
@@ -79,7 +78,6 @@ public class ProductionController implements Initializable {
                 Stage stage = new Stage();
                 stage.setScene(new Scene(p));
                 stage.show();
-
             }
         });
     }

@@ -8,7 +8,7 @@
         <Button fx:id="createProductionButton" layoutX="49.0" layoutY="107.0" mnemonicParsing="false" onAction="#switchToProductionValues" text="Opret Produktioner" />
         <Button fx:id="viewProductionButton" layoutX="49.0" layoutY="164.0" mnemonicParsing="false" onAction="#showProduction" prefHeight="25.0" prefWidth="119.0" text="Se Produktioner" />
         <Button fx:id="backButton" layoutX="14.0" layoutY="21.0" mnemonicParsing="false" onAction="#backToMainScene" prefHeight="25.0" prefWidth="23.0" styleClass="BackIcon" stylesheets="@../../CSS/BackArrow.css" />
-      <TableView fx:id="tableView" layoutX="184.0" layoutY="76.0" prefHeight="200.0" prefWidth="381.0">
+      <TableView fx:id="tableView" layoutX="185.0" layoutY="107.0" prefHeight="200.0" prefWidth="381.0">
         <columns>
           <TableColumn fx:id="idColumn" prefWidth="45.0" text="ID" />
           <TableColumn fx:id="nameColumn" prefWidth="150.0" text="Titel" />

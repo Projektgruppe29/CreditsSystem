@@ -1,5 +1,6 @@
 package org.present;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -12,7 +13,6 @@ public class LoginController {
     public TextField passwordTextField;
     User user;
 
-
     @FXML
     //Temporary code to allow switching to production fxml
     private void switchToProduction() throws IOException {
@@ -24,7 +24,6 @@ public class LoginController {
         String password = passwordTextField.getText();
         user = new User();
         user.getUsers();
-
 
         Alert a = new Alert(Alert.AlertType.NONE);
 
@@ -39,5 +38,9 @@ public class LoginController {
             // show the dialog
             a.show();
         }
+    }
+
+    public void switchToPrimary(ActionEvent actionEvent) throws IOException {
+        App.setRoot("primary");
     }
 }

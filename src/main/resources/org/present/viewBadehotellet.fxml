@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.present.FeaturedController">
+    <children>
+        <Label fx:id="movieName" layoutX="30.0" layoutY="48.0" text="Korpset">
+            <font>
+                <Font size="30.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="127.0" fitWidth="122.0" layoutX="30.0" layoutY="100.0" pickOnBounds="true">
+            <image>
+                <Image url="@../../CSS/Korpset.jpg" />
+            </image>
+        </ImageView>
+        <Label layoutX="230.0" layoutY="33.0" text="CAST">
+            <font>
+                <Font size="30.0" />
+            </font>
+        </Label>
+        <Label layoutX="231.0" layoutY="78.0" text="Chefinstruktør">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label layoutX="274.0" layoutY="118.0" text="Thomas Rathsack" />
+        <ImageView fitHeight="45.0" fitWidth="41.0" layoutX="231.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../CSS/Thomas.jpg" />
+            </image>
+        </ImageView>
+        <Label layoutX="231.0" layoutY="164.0" text="Instruktør">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label layoutX="279.0" layoutY="206.0" text="Erik Jørgensen" />
+        <Label layoutX="279.0" layoutY="259.0" text="Magnus Hansson" />
+        <Label layoutX="279.0" layoutY="309.0" text="Rune Danielsen" />
+        <ImageView fitHeight="62.0" fitWidth="30.0" layoutX="231.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../CSS/Erik.jpg" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="62.0" fitWidth="30.0" layoutX="231.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../CSS/Magnus.jpg" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="61.0" fitWidth="30.0" layoutX="231.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../CSS/Rune.jpg" />
+            </image>
+        </ImageView>
+        <Button fx:id="backButton" layoutX="30.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToMainScene" prefHeight="25.0" prefWidth="30.0" styleClass="BackIcon" stylesheets="@../../CSS/BackArrow.css" />
+    </children>
+</AnchorPane>

@@ -14,15 +14,12 @@ public class User {
     private User currentUser;
     private ArrayList<User> users;
 
-    public String getUserName() { return userName; }
+    public String getUserName() {
+        return userName;
+    }
 
     public User(int userID, String userName, String password) {
         this.userID = userID;
-        this.userName = userName;
-        this.password = password;
-    }
-
-    public User(String userName, String password) {
         this.userName = userName;
         this.password = password;
     }
@@ -35,7 +32,7 @@ public class User {
 
     public User(){
         this.users=new ArrayList<>();
-}
+    }
 
     public User getCurrentUser() {
         return currentUser;

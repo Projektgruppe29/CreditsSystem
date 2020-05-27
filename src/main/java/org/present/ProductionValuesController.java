@@ -12,7 +12,6 @@ public class ProductionValuesController {
     public TextField nameTextField;
     public TextField genreTextField;
     public TextField releaseYearTextField;
-
     public Text nameProductionColumn;
     public Text genreProductionColumn;
     public Text releaseProductionYearColumn;

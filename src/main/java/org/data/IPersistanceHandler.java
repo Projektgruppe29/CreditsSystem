@@ -11,6 +11,4 @@ public interface IPersistanceHandler {
     public Production getProduction(int id);
     public void createProduction(Production production);
 
-    public User loginToSystem(String username);
-
 }

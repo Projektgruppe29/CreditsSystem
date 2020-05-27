@@ -39,7 +39,7 @@ public class PrimaryController implements Initializable {
     private TableColumn<Production, String> genreColumn;
     @FXML
     private TableColumn<Production, Integer> releaseYearColumn;
-    Production credits;
+    Production production;
     private static String currentName;
 
 
@@ -48,22 +48,17 @@ public class PrimaryController implements Initializable {
         App.setRoot("Login");
     }
 
-    public void switchToViewFeatured(MouseEvent mouseEvent) throws IOException {
-        App.setRoot("viewFeatured");
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setCellTable();
 
         tableView.getSelectionModel().selectedItemProperty().addListener((ObservableValue ov, Object old_val, Object new_val) -> {
-            credits = (Production) tableView.getSelectionModel().getSelectedItem();
+            production = (Production) tableView.getSelectionModel().getSelectedItem();
             int index = tableView.getSelectionModel().getSelectedIndex();
-            PersistanceHandler.getInstance().getCredits(credits.getId());
-            currentid = credits.getId();
-            currentName = credits.getName();
+            PersistanceHandler.getInstance().getCredits(production.getId());
+            currentid = production.getId();
+            currentName = production.getName();
         });
-
 
         tableView.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -82,7 +77,6 @@ public class PrimaryController implements Initializable {
                 Stage stage = new Stage();
                 stage.setScene(new Scene(p));
                 stage.show();
-
             }
         });
     }
@@ -114,7 +108,6 @@ public class PrimaryController implements Initializable {
                     return false;
                 }
             });
-
         });
 
         SortedList<Production> sortedList = new SortedList<>(filteredList);
@@ -131,8 +124,6 @@ public class PrimaryController implements Initializable {
 
     public void viewProduction(ActionEvent actionEvent) {
         tableView.setItems(PersistanceHandler.getInstance().getProduction());
-
-
         searchSortFilter();
     }
 
@@ -142,5 +133,21 @@ public class PrimaryController implements Initializable {
 
     public static String getCurrentName() {
         return currentName;
+    }
+
+    public void switchToViewKorpset(MouseEvent mouseEvent) throws IOException {
+        App.setRoot("viewKorpset");
+    }
+
+    public void switchToViewMillionær(MouseEvent mouseEvent) throws IOException {
+        App.setRoot("viewMillionær");
+    }
+
+    public void switchToViewBadehotellet(MouseEvent mouseEvent) throws IOException {
+        App.setRoot("viewBadehotellet");
+    }
+
+    public void switchToViewDybvad(MouseEvent mouseEvent) throws IOException {
+        App.setRoot("viewDybvad");
     }
 }
