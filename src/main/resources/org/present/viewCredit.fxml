@@ -1,30 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.present.ViewCreditController">
     <children>
-        <Button fx:id="backButton" layoutX="35.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToPrimaryScene" prefHeight="25.0" prefWidth="32.0" styleClass="BackIcon" stylesheets="@../../CSS/BackArrow.css" />
-        <ImageView fx:id="ImageView" fitHeight="105.0" fitWidth="117.0" layoutX="35.0" layoutY="50.0" onMouseClicked="#AddImage" pickOnBounds="true" />
-        <Label fx:id="titleLabel" layoutX="37.0" layoutY="161.0" text="Titel">
+        <Label fx:id="titleLabel" layoutX="35.0" layoutY="50.0" text="Titel">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <TableView layoutX="272.0" layoutY="200.0" prefHeight="182.0" prefWidth="306.0">
+        <TableView fx:id="tableView" layoutX="54.0" layoutY="146.0" prefHeight="222.0" prefWidth="497.0">
             <columns>
-                <TableColumn fx:id="idColumn" prefWidth="32.0" text="ID" />
-                <TableColumn fx:id="nameColumn" prefWidth="134.0" text="Titel" />
-                <TableColumn fx:id="RoleColumn" prefWidth="122.0" text="Role" />
+                <TableColumn fx:id="castIdColumn" prefWidth="32.0" text="ID" />
+                <TableColumn fx:id="titelColumn" prefWidth="255.0" text="Titel" />
+                <TableColumn fx:id="roleColumn" prefWidth="187.0" text="Role" />
             </columns>
         </TableView>
-        <TextArea fx:id="areaText" layoutX="272.0" layoutY="50.0" prefHeight="105.0" prefWidth="306.0" promptText="Beskrivelse af produktionen">
-            <font>
-                <Font size="20.0" />
-            </font>
-        </TextArea>
     </children>
 </AnchorPane>

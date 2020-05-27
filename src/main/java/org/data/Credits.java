@@ -2,6 +2,7 @@ package org.data;
 
 public class Credits {
     private int id;
+    private int castId;
     private String name;
     private String role;
 
@@ -10,6 +11,19 @@ public class Credits {
         this.name = name;
         this.role = role;
     }
+
+    public Credits(int id, int cast_id, String name, String role) {
+        this.id = id;
+        this.castId = cast_id;
+        this.name = name;
+        this.role = role;
+    }
+
+    public Credits(String name, String role) {
+        this.name = name;
+        this.role = role;
+    }
+
 
     public int getId() {
         return id;
@@ -23,18 +37,13 @@ public class Credits {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getRole() {
         return role;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public int getCastID() {
+        return castId;
     }
-
 }
 
 

@@ -4,43 +4,39 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.present.CreditsController">
+<AnchorPane prefHeight="534.0" prefWidth="729.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.present.CreditsController">
     <children>
-        <Button fx:id="backButton" layoutX="35.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToProduction" prefHeight="25.0" prefWidth="32.0" styleClass="BackIcon" stylesheets="@../../CSS/BackArrow.css" />
-      <ImageView fx:id="ImageView" fitHeight="105.0" fitWidth="117.0" layoutX="35.0" layoutY="50.0" onMouseClicked="#AddImage" pickOnBounds="true" />
-      <Label fx:id="titleLabel" layoutX="37.0" layoutY="161.0" text="Titel">
+      <Label fx:id="titleLabel" layoutX="35.0" layoutY="66.0" text="Titel">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TableView layoutX="35.0" layoutY="200.0" prefHeight="182.0" prefWidth="254.0">
-        <columns>
-          <TableColumn fx:id="idColumn" prefWidth="32.0" text="ID" />
-          <TableColumn fx:id="nameColumn" prefWidth="109.0" text="Titel" />
-            <TableColumn fx:id="RoleColumn" prefWidth="97.0" text="Role" />
-        </columns>
-      </TableView>
-      <TextArea fx:id="areaText" layoutX="208.0" layoutY="50.0" prefHeight="105.0" prefWidth="306.0" promptText="Beskrivelse af produktionen">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </TextArea>
-      <Button fx:id="createCredditButton" layoutX="471.0" layoutY="254.0" mnemonicParsing="false" onAction="#CreateCredit" prefHeight="25.0" prefWidth="117.0" text="Opret kreditering" />
-      <Button fx:id="AlterCreditButton" layoutX="471.0" layoutY="312.0" mnemonicParsing="false" onAction="#AlterCredit" prefHeight="25.0" prefWidth="117.0" text="Ændre kreditering" />
-      <TextField fx:id="nameTextfield" layoutX="300.0" layoutY="254.0" />
-      <TextField fx:id="roleTextField" layoutX="300.0" layoutY="312.0" />
-      <Label layoutX="343.0" layoutY="231.0" text="Skriv navn" />
-      <Label layoutX="347.0" layoutY="291.0" text="Skriv role" />
-      <Label layoutX="105.0" layoutY="12.0" text="Opret Kreditering">
+      <Button fx:id="createCredditButton" layoutX="574.0" layoutY="502.0" mnemonicParsing="false" onAction="#CreateCredit" prefHeight="25.0" prefWidth="117.0" text="Opret kreditering" />
+      <Button fx:id="AlterCreditButton" layoutX="574.0" layoutY="547.0" mnemonicParsing="false" onAction="#AlterCredit" prefHeight="25.0" prefWidth="117.0" text="Ændre kreditering" />
+      <TextField fx:id="nameTextfield" layoutX="44.0" layoutY="517.0" />
+      <TextField fx:id="roleTextField" layoutX="44.0" layoutY="572.0" />
+      <Label layoutX="44.0" layoutY="497.0" text="Skriv navn" />
+      <Label layoutX="47.0" layoutY="551.0" text="Skriv role" />
+      <Label layoutX="35.0" layoutY="14.0" text="Opret Kreditering">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
+      <Label layoutX="44.0" layoutY="442.0" text="Skriv ID" />
+      <TextField fx:id="idTextField" layoutX="44.0" layoutY="459.0" />
+      <Label fx:id="productionID" layoutX="44.0" layoutY="384.0" text="Skriv ProduktionsID" />
+      <TextField fx:id="productionIDTextField" layoutX="44.0" layoutY="401.0" />
+        <TableView fx:id="tableView" layoutX="35.0" layoutY="152.0" prefHeight="222.0" prefWidth="493.0">
+            <columns>
+                <TableColumn fx:id="idColumn" prefWidth="98.0" text="ProduktionsID" />
+            <TableColumn fx:id="castIdColumn" minWidth="0.0" prefWidth="69.0" text="CastID" />
+                <TableColumn fx:id="titelColumn" prefWidth="177.0" text="Navn" />
+                <TableColumn fx:id="roleColumn" prefWidth="142.0" text="Role" />
+            </columns>
+        </TableView>
     </children>
 </AnchorPane>

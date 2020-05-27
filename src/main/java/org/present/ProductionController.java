@@ -1,12 +1,18 @@
 package org.present;
 
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import org.data.Production;
 import org.domain.PersistanceHandler;
 import java.net.URL;
@@ -23,6 +29,10 @@ public class ProductionController implements Initializable {
     private TableColumn<Production, String> genreColumn;
     @FXML
     private TableColumn<Production, Integer> releaseYearColumn;
+    private static int ids;
+    private static String names;
+
+    Production production;
 
 
     @FXML
@@ -42,6 +52,36 @@ public class ProductionController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setCellTable();
+
+        tableView.getSelectionModel().selectedItemProperty().addListener((ObservableValue ov, Object old_val, Object new_val) -> {
+            production = (Production) tableView.getSelectionModel().getSelectedItem();
+            int index = tableView.getSelectionModel().getSelectedIndex();
+            PersistanceHandler.getInstance().getCredits(production.getId());
+            ids = production.getId();
+            names = production.getName();
+        });
+
+        tableView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("Credits.fxml"));
+                CreditsController dac = (CreditsController) loader.getController();
+                try {
+                    loader.load();
+                    Thread.sleep(400);
+                } catch (IOException | InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                Parent p = loader.getRoot();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(p));
+                stage.show();
+
+            }
+        });
     }
 
     private void setCellTable() {
@@ -55,38 +95,11 @@ public class ProductionController implements Initializable {
         tableView.setItems(PersistanceHandler.getInstance().getProduction());
     }
 
-
-    public void CreateCreditForProduction(MouseEvent mouseEvent) throws IOException, InterruptedException {
-        Thread.sleep(500);
-        App.setRoot("Credits");
+    public static int getIds() {
+        return ids;
     }
 
-    /*
-    public boolean createProduction(ProductionType type,
-                                    @Nullable UUID uuid,
-                                    String title,
-                                    String internalId,
-                                    String description,
-                                    Image image,
-                                    Set<Genre> genres,
-                                    int length,
-                                    float rating,
-                                    int year,
-                                    List<ProductionPerson> persons) {
-        if (title == null || title.matches("\\s*")) return false;
-        switch (type) {
-            case MOVIE:
-                return createMovie(uuid == null ? getRandomUUID() : uuid, title, internalId, description, image, genres, length, rating, year, persons);
-            case SERIES:
-                return createSeries(uuid == null ? getRandomUUID() : uuid, title, internalId, image, description, genres);
-            case SEASON:
-                return createSeason(uuid == null ? getRandomUUID() : uuid, title, internalId, description);
-            case EPISODE:
-                return createEpisode(uuid == null ? getRandomUUID() : uuid, title, internalId, description, length, rating, year, persons);
-        }
-
-        return false;
+    public static String getNames() {
+        return names;
     }
-
-     */
 }

@@ -7,8 +7,6 @@ import org.data.IPersistanceHandler;
 import org.data.Production;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class PersistanceHandler implements IPersistanceHandler {
     private static PersistanceHandler instance;
@@ -44,7 +42,7 @@ public class PersistanceHandler implements IPersistanceHandler {
         }
         return connection;
     }
-
+/*
     @Override
     public ObservableList<Credits> getCredits() {
         try{
@@ -62,34 +60,57 @@ public class PersistanceHandler implements IPersistanceHandler {
         }
     }
 
+ */
+
     @Override
-    public Credits getCredits(int id) {
+    public ObservableList<Credits> getCredits() {
         try{
             DBConnect();
-            PreparedStatement queryStatement = connection.prepareStatement("SELECT * FROM credit WHERE id = ?");
-            queryStatement.setInt(1, id);
+            PreparedStatement queryStatement = connection.prepareStatement("SELECT * FROM credit");
             ResultSet rs = queryStatement.executeQuery();
-            if(rs.next()) {
-                return null;
+            ObservableList<Credits> returnValue = FXCollections.observableArrayList();
+            while(rs.next()) {
+                returnValue.add(new Credits(rs.getInt(1), rs.getInt(2),rs.getString(3), rs.getString(4)));
             }
-            return new Credits(rs.getInt(1),rs.getString(2), rs.getString(3));
+            return returnValue;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    public boolean createCredits(Credits credits) {
+    @Override
+    public ObservableList<Credits> getCredits(int id) {
         try{
             DBConnect();
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO credit (name, role)"
-                    + "VALUES (?, ?)");
-            statement.setString(1, credits.getName());
-            statement.setString(2, credits.getRole());
-            return statement.execute();
+            PreparedStatement queryStatement = connection.prepareStatement("SELECT * FROM credit WHERE movie_id = ?");
+            queryStatement.setInt(1, id);
+            ResultSet rs = queryStatement.executeQuery();
+            ObservableList<Credits> returnValue = FXCollections.observableArrayList();
+            if(rs.next()) {
+                System.out.println(rs.getInt(2));
+                returnValue.add(new Credits(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4)));
+                return returnValue;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
+            return null;
+        }
+        return null;
+    }
+
+    public void createCredits(Credits credits) {
+        try{
+            DBConnect();
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO credit (movie_id, cast_id, name, role)"
+                    + "VALUES (?, ?, ?, ?)");
+            statement.setInt(1, credits.getId());
+            statement.setInt(2, credits.getCastID());
+            statement.setString(3, credits.getName());
+            statement.setString(4, credits.getRole());
+            statement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
@@ -141,21 +162,6 @@ public class PersistanceHandler implements IPersistanceHandler {
             e.printStackTrace();
         }
     }
-
-    public void createProduction(String name, String genre, int releaseYear) {
-        createProduction(new Production(name, genre, releaseYear));
-    }
-
-    public static void CreateProductionTable() throws SQLException{
-        try{
-            DBConnect();
-            PreparedStatement createTable = connection.prepareStatement("CREATE TABLE IF NOT EXISTS table(id int NOT NULL AUTO_INCREMENT, name VARCHAR(50), role VARCHAR(50), PRIMARY KEY(id))");
-            createTable.executeUpdate();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
 
 }
 

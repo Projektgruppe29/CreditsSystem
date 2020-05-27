@@ -9,12 +9,10 @@ import org.domain.PersistanceHandler;
 import java.io.IOException;
 
 public class ProductionValuesController {
-    public TextField IDTextField;
     public TextField nameTextField;
     public TextField genreTextField;
     public TextField releaseYearTextField;
 
-    public Text idProductionColumn;
     public Text nameProductionColumn;
     public Text genreProductionColumn;
     public Text releaseProductionYearColumn;

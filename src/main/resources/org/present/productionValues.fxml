@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.present.ProductionValuesController">
+<AnchorPane prefHeight="400.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.present.ProductionValuesController">
    <children>
       <Button fx:id="Confirm" layoutX="157.0" layoutY="361.0" mnemonicParsing="false" onAction="#confirmProduction" text="Confirm">
          <font>
@@ -17,19 +16,13 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Text>
-      <TextField fx:id="nameTextField" layoutX="92.0" layoutY="243.0" prefHeight="25.0" prefWidth="192.0" promptText="Skriv produktionens titel" />
-      <TextField fx:id="genreTextField" layoutX="92.0" layoutY="282.0" prefHeight="25.0" prefWidth="192.0" promptText="Skriv produktionens genre" />
-      <TextField fx:id="releaseYearTextField" layoutX="92.0" layoutY="324.0" prefHeight="25.0" prefWidth="192.0" promptText="Skriv produktionens udgivelsesår" />
+      <TextField fx:id="nameTextField" layoutX="92.0" layoutY="101.0" prefHeight="25.0" prefWidth="192.0" promptText="Skriv produktionens titel" />
+      <TextField fx:id="genreTextField" layoutX="92.0" layoutY="144.0" prefHeight="25.0" prefWidth="192.0" promptText="Skriv produktionens genre" />
+      <TextField fx:id="releaseYearTextField" layoutX="92.0" layoutY="188.0" prefHeight="25.0" prefWidth="192.0" promptText="Skriv produktionens udgivelsesår" />
 
       <Button fx:id="backButton" layoutX="24.0" layoutY="24.0" mnemonicParsing="false" onAction="#switchToProduction" prefWidth="32.0" styleClass="BackIcon" stylesheets="@../../CSS/BackArrow.css" />
-      <ImageView fitHeight="128.0" fitWidth="125.0" layoutX="24.0" layoutY="63.0" pickOnBounds="true" />
-      <TextArea layoutX="206.0" layoutY="63.0" prefHeight="128.0" prefWidth="348.0" promptText="Beskrivelse af Produktion">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </TextArea>
-      <Text fx:id="nameProductionColumn" layoutX="21.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titel" />
-      <Text fx:id="genreProductionColumn" layoutX="17.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Genre" />
-      <Text fx:id="releaseProductionYearColumn" layoutX="15.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Udgivelsesår" />
+      <Text fx:id="nameProductionColumn" layoutX="21.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titel" />
+      <Text fx:id="genreProductionColumn" layoutX="16.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Genre" />
+      <Text fx:id="releaseProductionYearColumn" layoutX="14.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Udgivelsesår" />
    </children>
 </AnchorPane>

@@ -45,14 +45,14 @@ false Africa/Blantyre
 false Africa/Brazzaville
 false Africa/Bujumbura
 false Africa/Cairo
-true Africa/Casablanca
+false Africa/Casablanca
 true Africa/Ceuta
 false Africa/Conakry
 false Africa/Dakar
 false Africa/Dar_es_Salaam
 false Africa/Djibouti
 false Africa/Douala
-true Africa/El_Aaiun
+false Africa/El_Aaiun
 false Africa/Freetown
 false Africa/Gaborone
 false Africa/Harare
@@ -784,15 +784,14 @@ false Z
 false Zulu
 true posixrules
 </TimeZones>
-      <StartupTime>1589876525</StartupTime>
+      <StartupTime>1590518169</StartupTime>
     </root>
     <database id="2" parent="1" name="DBData">
       <ObjectId>16450</ObjectId>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>665</IntrospectionStateNumber>
+      <IntrospectionStateNumber>716</IntrospectionStateNumber>
       <Current>1</Current>
       <Relations>sequence|table|16498|16500|1
-sequence|table|16466|16463|1
 sequence|table|16475|16460|1
 </Relations>
     </database>
@@ -800,7 +799,6 @@ sequence|table|16475|16460|1
       <ObjectId>13318</ObjectId>
       <Comment>default administrative connection database</Comment>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>663</IntrospectionStateNumber>
     </database>
     <role id="4" parent="1" name="pg_execute_server_program">
       <ObjectId>4571</ObjectId>
@@ -851,7 +849,7 @@ sequence|table|16475|16460|1
       <Comment>standard public schema</Comment>
       <StateNumber>276</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>666</IntrospectionStateNumber>
+      <IntrospectionStateNumber>717</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <access-method id="16" parent="2" name="heap">
@@ -921,15 +919,7 @@ sequence|table|16475|16460|1
     <language id="25" parent="2" name="internal"/>
     <language id="26" parent="2" name="plpgsql"/>
     <language id="27" parent="2" name="sql"/>
-    <sequence id="28" parent="15" name="credit_id_seq">
-      <ObjectId>16466</ObjectId>
-      <Owner>postgres</Owner>
-      <StateNumber>609</StateNumber>
-      <SequenceIdentity>1</SequenceIdentity>
-      <CacheSize>1</CacheSize>
-      <DataType>integer|0s</DataType>
-    </sequence>
-    <sequence id="29" parent="15" name="login_id_seq">
+    <sequence id="28" parent="15" name="login_id_seq">
       <ObjectId>16475</ObjectId>
       <Owner>postgres</Owner>
       <StateNumber>621</StateNumber>
@@ -937,7 +927,7 @@ sequence|table|16475|16460|1
       <CacheSize>1</CacheSize>
       <DataType>integer|0s</DataType>
     </sequence>
-    <sequence id="30" parent="15" name="production_id_seq">
+    <sequence id="29" parent="15" name="production_id_seq">
       <ObjectId>16498</ObjectId>
       <Owner>postgres</Owner>
       <StateNumber>656</StateNumber>
@@ -945,64 +935,88 @@ sequence|table|16475|16460|1
       <CacheSize>1</CacheSize>
       <DataType>integer|0s</DataType>
     </sequence>
-    <table id="31" parent="15" name="credit">
+    <table id="30" parent="15" name="credit">
       <ObjectId>16463</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>636</StateNumber>
+      <StateNumber>699</StateNumber>
     </table>
-    <table id="32" parent="15" name="login">
+    <table id="31" parent="15" name="login">
       <ObjectId>16460</ObjectId>
       <Owner>postgres</Owner>
       <StateNumber>624</StateNumber>
     </table>
-    <table id="33" parent="15" name="production">
+    <table id="32" parent="15" name="production">
       <ObjectId>16500</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>656</StateNumber>
+      <StateNumber>694</StateNumber>
     </table>
-    <column id="34" parent="31" name="id">
+    <column id="33" parent="30" name="movie_id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>609</StateNumber>
-      <DefaultExpression>nextval(&apos;credit_id_seq&apos;::regclass)</DefaultExpression>
+      <StateNumber>678</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="35" parent="31" name="name">
-      <Position>2</Position>
+    <column id="34" parent="30" name="cast_id">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>680</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="35" parent="30" name="name">
+      <Position>5</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>610</StateNumber>
+      <StateNumber>698</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="36" parent="31" name="role">
-      <Position>3</Position>
+    <column id="36" parent="30" name="role">
+      <Position>6</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>636</StateNumber>
+      <StateNumber>699</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="37" parent="31" name="credit_id_uindex">
-      <ObjectId>16472</ObjectId>
-      <StateNumber>636</StateNumber>
-      <ColNames>id</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <index id="38" parent="31" name="credit_pk">
-      <ObjectId>16473</ObjectId>
-      <StateNumber>636</StateNumber>
-      <ColNames>id</ColNames>
+    <index id="37" parent="30" name="credit_pk">
+      <ObjectId>16509</ObjectId>
+      <StateNumber>699</StateNumber>
+      <ColNames>movie_id
+cast_id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <key id="39" parent="31" name="credit_pk">
-      <ObjectId>16474</ObjectId>
-      <StateNumber>613</StateNumber>
-      <ColNames>id</ColNames>
+    <key id="38" parent="30" name="credit_pk">
+      <ObjectId>16510</ObjectId>
+      <StateNumber>693</StateNumber>
+      <ColNames>movie_id
+cast_id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>credit_pk</UnderlyingIndexName>
     </key>
-    <column id="40" parent="32" name="id">
+    <foreign-key id="39" parent="30" name="credit___movie_id_fkey">
+      <ObjectId>16516</ObjectId>
+      <StateNumber>695</StateNumber>
+      <ColNames>movie_id</ColNames>
+      <RefTableId>16500</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>production</RefTableName>
+      <RefKeyName>movie_pk</RefKeyName>
+      <RefColNames>id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="40" parent="30" name="credit___cast_id_fkey">
+      <ObjectId>16511</ObjectId>
+      <StateNumber>694</StateNumber>
+      <ColNames>cast_id</ColNames>
+      <RefTableId>16500</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>production</RefTableName>
+      <RefKeyName>movie_pk</RefKeyName>
+      <RefColNames>id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="41" parent="31" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
@@ -1010,95 +1024,95 @@ sequence|table|16475|16460|1
       <DefaultExpression>nextval(&apos;login_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
-    <column id="41" parent="32" name="username">
+    <column id="42" parent="31" name="username">
       <Position>2</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>622</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="42" parent="32" name="password">
+    <column id="43" parent="31" name="password">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>623</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="43" parent="32" name="access_level">
+    <column id="44" parent="31" name="access_level">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>629</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="44" parent="32" name="login_id_uindex">
+    <index id="45" parent="31" name="login_id_uindex">
       <ObjectId>16481</ObjectId>
       <StateNumber>625</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="45" parent="32" name="login_pk">
+    <index id="46" parent="31" name="login_pk">
       <ObjectId>16482</ObjectId>
       <StateNumber>626</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <key id="46" parent="32" name="login_pk">
+    <key id="47" parent="31" name="login_pk">
       <ObjectId>16483</ObjectId>
       <StateNumber>626</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>login_pk</UnderlyingIndexName>
     </key>
-    <column id="47" parent="33" name="id">
+    <column id="48" parent="32" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>656</StateNumber>
+      <StateNumber>674</StateNumber>
       <DefaultExpression>nextval(&apos;production_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
-    <column id="48" parent="33" name="titel">
+    <column id="49" parent="32" name="titel">
       <Position>2</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>656</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="49" parent="33" name="genre">
+    <column id="50" parent="32" name="genre">
       <Position>3</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>656</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="50" parent="33" name="release_year">
+    <column id="51" parent="32" name="release_year">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>656</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="51" parent="33" name="production_id_uindex">
+    <index id="52" parent="32" name="movie_pk">
+      <ObjectId>16507</ObjectId>
+      <StateNumber>689</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+    </index>
+    <index id="53" parent="32" name="production_id_uindex">
       <ObjectId>16504</ObjectId>
       <StateNumber>657</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="52" parent="33" name="production_pk">
-      <ObjectId>16505</ObjectId>
-      <StateNumber>658</StateNumber>
-      <ColNames>id</ColNames>
-      <Unique>1</Unique>
-      <Primary>1</Primary>
-    </index>
-    <key id="53" parent="33" name="production_pk">
-      <ObjectId>16506</ObjectId>
-      <StateNumber>658</StateNumber>
+    <key id="54" parent="32" name="movie_pk">
+      <ObjectId>16508</ObjectId>
+      <StateNumber>689</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
-      <UnderlyingIndexName>production_pk</UnderlyingIndexName>
+      <UnderlyingIndexName>movie_pk</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>

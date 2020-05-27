@@ -1,9 +1,11 @@
 package org.present;
 
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
@@ -12,7 +14,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import org.data.Credits;
+import org.data.Production;
+import org.domain.PersistanceHandler;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,73 +25,68 @@ import java.util.ResourceBundle;
 
 public class CreditsController implements Initializable {
     @FXML
-    private TableView<Credits> tableView;
+    private TableView tableView;
     @FXML
     private TableColumn<Credits, Integer> idColumn;
     @FXML
-    private TableColumn<Credits, String> nameColumn;
+    private TableColumn<Credits, Integer> castIdColumn;
     @FXML
-    private TableColumn<Credits, String> RoleColumn;
+    private TableColumn<Credits, String> titelColumn;
+    @FXML
+    private TableColumn<Credits, String> roleColumn;
 
+    @FXML
+    private TextField productionIDTextField;
     @FXML
     private TextField nameTextField;
     @FXML
     private TextField roleTextField;
+    @FXML
+    private TextField idTextField;
+
+    @FXML
+    Label titleLabel;
 
     public void switchToProduction(ActionEvent actionEvent) throws IOException {
         App.setRoot("Production");
     }
 
-    public void changeFullnameCellEvent(CellEditEvent fullNameCell) {
-        Credits personSelected = tableView.getSelectionModel().getSelectedItem();
-        personSelected.setName(fullNameCell.getNewValue().toString());
-    }
-
-    public void changeRoleCellEvent(CellEditEvent editEvent) {
-        Credits personSelected = tableView.getSelectionModel().getSelectedItem();
-        personSelected.setName(editEvent.getNewValue().toString());
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Set Columns
-        idColumn.setCellValueFactory(new PropertyValueFactory<Credits, Integer>("id"));
-        nameColumn.setCellValueFactory(new PropertyValueFactory<Credits, String>("name"));
-        RoleColumn.setCellValueFactory(new PropertyValueFactory<Credits, String>("role"));
+        setCellTable();
+
+        tableView.setItems(PersistanceHandler.getInstance().getCredits(ProductionController.getIds()));
+        titleLabel.setText(PrimaryController.getCurrentName());
+
     }
 
 
-    private void clearList() {
+    private void setCellTable() {
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        castIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        titelColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        roleColumn.setCellValueFactory(new PropertyValueFactory<>("role"));
+    }
+
+
+    public void CreateCredit(ActionEvent actionEvent) {
+        PersistanceHandler.getInstance().createCredits(new Credits(nameTextField.getText(), roleTextField.getText()));
+        clearFields();
+
+    }
+
+    private void clearFields() {
+        productionIDTextField.clear();
+        idTextField.clear();
         nameTextField.clear();
         roleTextField.clear();
     }
 
-    public void deleteFromList(ActionEvent actionEvent) {
-        ObservableList<Credits> selectedRows, allPeople;
-        allPeople = tableView.getItems();
-
-        selectedRows = tableView.getSelectionModel().getSelectedItems();
-
-        for(Credits person : selectedRows) {
-            allPeople.remove(person);
-        }
-
-    }
-
-    public void AddImage(MouseEvent mouseEvent) {
-
-    }
-
-    public void CreateCredit(ActionEvent actionEvent) {
-        Credits newPerson = new Credits(new Integer(idColumn.getText()), nameTextField.getText(), roleTextField.getText());
-
-        tableView.getItems().add(newPerson);
-    }
-
     public void AlterCredit(ActionEvent actionEvent) {
         tableView.setEditable(true);
-        nameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        RoleColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+
     }
 
 }
