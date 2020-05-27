@@ -72,7 +72,8 @@ public class CreditsController implements Initializable {
 
 
     public void CreateCredit(ActionEvent actionEvent) {
-        PersistanceHandler.getInstance().createCredits(new Credits(nameTextField.getText(), roleTextField.getText()));
+        PersistanceHandler.getInstance().createCredits(new Credits(Integer.parseInt(idTextField.getText()),
+                Integer.parseInt(productionIDTextField.getText()), nameTextField.getText(), roleTextField.getText()));
         clearFields();
 
     }

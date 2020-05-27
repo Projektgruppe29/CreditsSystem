@@ -15,7 +15,7 @@ public class PersistanceHandler implements IPersistanceHandler {
     private static int port = 5432;
     private static String databaseName = "DBData";
     private static String username = "postgres";
-    private static String password = "SDUDuller123";
+    private static String password = "postgres";
 
     private static Connection connection = null;
 
@@ -83,10 +83,12 @@ public class PersistanceHandler implements IPersistanceHandler {
     public void createCredits(Credits credits) {
         try{
             DBConnect();
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO credit (name, role)"
-                    + "VALUES (?, ?)");
-            statement.setString(1, credits.getName());
-            statement.setString(2, credits.getRole());
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO credit (movie_id, cast_id, name, role)"
+                    + "VALUES (?, ?, ?, ?)");
+            statement.setInt(1, credits.getId());
+            statement.setInt(2, credits.getCastID());
+            statement.setString(3, credits.getName());
+            statement.setString(4, credits.getRole());
             statement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
