@@ -1,58 +1,33 @@
-//OPRET DATABASEN FØRST
+--OPRET DATABASEN FØRST
 create database "DBData";
 
-//Oprettelse af produktionstabellen
+--Oprettelse af produktionstabellen
 create table production
 (
-	id serial not null,
-	titel varchar(50) not null,
-	genre varchar(50) not null,
-	release_year int not null
+    id serial PRIMARY KEY UNIQUE,
+    titel VARCHAR(50) NOT NULL,
+    genre VARCHAR(50) NOT NULL,
+    release_year INTEGER NOT NULL
 );
 
-create unique index movie__pk
-	on production (id);
-
-create unique index production_id_uindex
-	on production (id);
-
-alter table production
-	add constraint movie_pk
-		primary key (id);
-
-//Oprettelse af krediteringstabellen
+--Oprettelse af krediteringstabellen
 create table credit
 (
-    movie_id integer     not null
-        constraint credit___movie_id_fkey
-            references production
-            on delete cascade,
-    cast_id  integer     not null
-        constraint credit___cast_id_fkey
-            references production
-            on delete cascade,
-    name     varchar(50) not null,
-    role     varchar(50) not null,
-    constraint credit_pk
-        primary key (movie_id, cast_id)
+    movie_id INTEGER REFERENCES production(id),
+    cast_id INTEGER REFERENCES production(id),
+    name VARCHAR(50) NOT NULL,
+    role VARCHAR(50) NOT NULL
 );
 
-create unique index credit__pk
-	on credit (movie_id, cast_id);
-
-alter table credit
-	add constraint credit_pk
-		primary key (movie_id, cast_id);
-
-//Oprettelse af login tabellen
+--Oprettelse af login tabellen
 create table login
 (
-	id serial not null,
-	username varchar(50) not null,
-	password int not null
+    id SERIAL NOT NULL,
+    username VARCHAR(50) NOT NULL,
+    password INTEGER NOT NULL
 );
 
-//Indsættelse af 5 produktioner
+--Indsættelse af 5 produktioner
 INSERT INTO production (titel, genre, release_year)
 VALUES ('Armadillo', 'Dokumentar', 2010);
 
@@ -68,8 +43,7 @@ VALUES ('Under Sandet', 'Krigsdrama', 2015);
 INSERT INTO production (titel, genre, release_year)
 VALUES ('Flyvende Farmor', 'Familiefilm', 2001);
 
-
-//Indsættelse af krediteringer i produktionen Armadillo
+--Indsættelse af krediteringer i produktionen Armadillo
 INSERT INTO credit (movie_id, cast_id, name, role)
 VALUES (1, 1, 'Ronnie Fridthjof', 'Producer');
 
@@ -83,7 +57,7 @@ INSERT INTO credit (movie_id, cast_id, name, role)
 VALUES (1, 4, 'Hold 7 - DK', 'Danske Soldater');
 
 
-//Indsættelse af krediteringer i produktionen Blå Mænd
+--Indsættelse af krediteringer i produktionen Blå Mænd
 INSERT INTO credit (movie_id, cast_id, name, role)
 VALUES (2, 1, 'Rasmus Heide', 'Instruktør, Manuskript');
 
@@ -99,7 +73,7 @@ VALUES (2, 4, 'Sidse Babett Knudsen', 'Lotte Markman');
 INSERT INTO credit (movie_id, cast_id, name, role)
 VALUES (2, 5, 'Martin Brygmann', 'Kørelærer');
 
-//Indsættelse af krediteringer i produktionen Alle for to
+--Indsættelse af krediteringer i produktionen Alle for to
 INSERT INTO credit (movie_id, cast_id, name, role)
 VALUES (3, 1, 'Ronnie Fridthjof', 'Producer');
 
@@ -116,14 +90,16 @@ INSERT INTO credit (movie_id, cast_id, name, role)
 VALUES (3, 5, 'Jonatan Spang', 'Nikolai');
 
 
-//Indsættelse af krediteringer i produktionen Under Sandet
+--Indsættelse af krediteringer i produktionen Under Sandet
 INSERT INTO credit (movie_id, cast_id, name, role)
 VALUES (4, 1, 'Roland Møller', 'Sgt. Carl Rasmussen');
+INSERT INTO credit (movie_id, cast_id, name, role)
+VALUES (4, 2, 'Mikkel Boe Følsgaard', 'Lt. Ebbe Jensen');
 
-//Indsættelse af krediteringer i produktionen Flyvende Farmor
+--Indsættelse af krediteringer i produktionen Flyvende Farmor
 
 
-//Indsættelse af 3 brugere i systemet
+--Indsættelse af 3 brugere i systemet
 INSERT INTO login (username, password)
 VALUES ('Kasper', 12345);
 
@@ -132,5 +108,3 @@ VALUES ('Daniel', 23456);
 
 INSERT INTO login (username, password)
 VALUES ('Andreas', 34567);
-
-
